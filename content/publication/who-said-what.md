@@ -20,12 +20,12 @@ publication_types = ["2"]
 
 # Publication name and optional abbreviated version.
 publication = "*Political Behavior*"
-publication_short = "*PB*"
+publication_short = ""
 
 # Abstract and optional shortened version.
-abstract = "Drawing on previous research concerning the role that source cues play in political information processing, we examine whether an ideological identity match between the source of a framed message and the respondent moderates framing effects. We test our hypotheses in two experiments concerning attitudes toward a proposed rally by the Ku Klux Klan. In Experiment 1 (N = 274), we test our hypothesis in a simple issue framing experiment. We find that framing effects occur for strong identifiers only when there is a match between the ideology of the speaker and respondent. In Experiment 2 (N = 259), we examine whether matched frames resonate equally well when individuals are simultaneously exposed to competing frames. The results from this experiment provide mixed support for our hypotheses. The results from our studies suggest that identity matching is an important factor to consider in future framing research."
+abstract = "Framing effects have been demonstrated in numerous experimental studies; yet, critics have been quick to point out that these designs fail include source information commonly featured in media reports. In two survey experiments, we find evidence of assimilated framing effects, such that an ideological match between message source and respondent facilitates framing, while a mismatch prevents these effects. This ideological matching effect occurs regardless of the actual content of the issue frame or the ideology of the respondent. In our studies, ideologues on either end of the political spectrum were just as quick to oppose a Ku Klux Klan rally due to public safety concerns as they were to support it to protect freedom of speech, so long as the issue was framed by a member of the favored ideological group."
 
-abstract_short = "Using two novel survey experiments, we examine whether an ideological identity match between the source of a framed message and the respondent moderates framing effects."
+abstract_short = "Using two survey experiments, we examine whether an ideological identity match between the source of a framed message and the respondent moderates framing effects."
 
 # Featured image thumbnail (optional)
 image_preview = ""
@@ -43,7 +43,7 @@ projects = []
 url_pdf = "pdf/who-said-what.pdf"
 url_preprint = ""
 url_code = ""
-url_dataset = ""
+url_dataset = "data/who-said-what-data.7z"
 url_project = ""
 url_slides = ""
 url_video = ""
@@ -52,7 +52,7 @@ url_source = ""
 
 # Custom links (optional).
 #   Uncomment line below to enable. For multiple links, use the form `[{...}, {...}, {...}]`.
-# url_custom = [{name = "Custom Link", url = "http://example.org"}]
+url_custom = [{name = "DOI", url = "https://doi.org/10.1007/s11109-009-9088-y"}]
 
 # Does the content use math formatting?
 math = true
