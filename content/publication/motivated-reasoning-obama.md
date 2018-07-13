@@ -1,4 +1,5 @@
-+++ title = "Motivated reasoning, political sophistication, and associations between President Obama and Islam"
++++
+title = "Motivated reasoning, political sophistication, and associations between President Obama and Islam"
 
 # Date first published.
 date = "2012-06-12"
@@ -22,9 +23,9 @@ publication = "PS: Political Science & Politics"
 publication_short = ""
 
 # Abstract and optional shortened version.
-abstract = "Framing effects have been demonstrated in numerous experimental studies; yet, critics have been quick to point out that these designs fail include source information commonly featured in media reports. In two survey experiments, we find evidence of assimilated framing effects, such that an ideological match between message source and respondent facilitates framing, while a mismatch prevents these effects. This ideological matching effect occurs regardless of the actual content of the issue frame or the ideology of the respondent. In our studies, ideologues on either end of the political spectrum were just as quick to oppose a Ku Klux Klan rally due to public safety concerns as they were to support it to protect freedom of speech, so long as the issue was framed by a member of the favored ideological group."
+abstract = "One-quarter of Americans falsely reported that President Obama is Muslim. We investigate whether individuals truly believe this misconception or simply express negative sentiments about the President when given the opportunity. Our results demonstrate that certain segments of society are 'motivated believers' who are predisposed to accept misinformation that supports their political views. To our surprise, we also discovered that knowledgeable citizens were just as likely to associate Obama with Islam as those who are less knowledgeable. Thus, although routinely condemned, smear campaigns appear to be quite effective at creating implicit associations between targeted political figures and false rumors."
 
-abstract_short = "Using two survey experiments, we examine whether an ideological identity match between the source of a framed message and the respondent moderates framing effects."
+abstract_short = "Using an implicit association task, we investigate whether misinformation is an accepted belief or simply a way to express negativity toward a political opponent."
 
 # Featured image thumbnail (optional)
 image_preview = ""
@@ -63,5 +64,4 @@ highlight = true
 # Place your image in the static/img/ folder and reference its filename below, e.g. image = "example.jpg".
 [header] image = "" 
 caption = ""
-
 +++
