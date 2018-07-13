@@ -19,7 +19,7 @@ authors = ["Todd K. Hartman", "Adam J. Newmark"]
 publication_types = ["2"]
 
 # Publication name and optional abbreviated version.
-publication = "PS: Political Science and Politics"
+publication = "*PS: Political Science & Politics*"
 publication_short = ""
 
 # Abstract and optional shortened version.
