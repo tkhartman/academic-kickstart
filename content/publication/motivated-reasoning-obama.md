@@ -19,7 +19,7 @@ authors = ["Todd K. Hartman", "Adam J. Newmark"]
 publication_types = ["2"]
 
 # Publication name and optional abbreviated version.
-publication = "PS: Political Science & Politics"
+publication = "PS: Political Science and Politics"
 publication_short = ""
 
 # Abstract and optional shortened version.
@@ -62,6 +62,8 @@ highlight = true
 
 # Featured image
 # Place your image in the static/img/ folder and reference its filename below, e.g. image = "example.jpg".
-[header] image = "" 
+[header]
+image = "" 
 caption = ""
+
 +++
