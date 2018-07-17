@@ -23,20 +23,9 @@ publication = "*Journal of Quantitative Criminology*"
 publication_short = ""
 
 # Abstract and optional shortened version.
-abstract = "Scholars continue to highlight the need for studies that examine not just whether 
-race matters in criminal sentencing, but also how and when race factors into judicial decision-making. 
-Using criminal sentencing data from 17,671 offenders in a non-guidelines state, we estimate a hurdle count model, 
-which combines a binary (logistic regression) model to predict zero counts and a zero-truncated negative 
-binomial model to predict positive counts. We also conducted a series of Monte Carlo simulations to 
-demonstrate that the hurdle count model provides unbiased estimates of our sentencing data and outperforms alternative approaches. 
-We find that black offenders with minimal to moderate criminal histories were more likely than whites to be incarcerated, 
-and the average difference in the likelihood of incarceration increased by 10 to 44 percentage points. 
-For the sentence length decision, we show that the difference between white and black offenders was 
-significant but small; the "black penalty" increased across severity levels up until a sharp decline for the most serious felonies."
+abstract = "Scholars continue to highlight the need for studies that examine not just whether race matters in criminal sentencing, but also how and when race factors into judicial decision-making. Using criminal sentencing data from 17,671 offenders in a non-guidelines state, we estimate a hurdle count model, which combines a binary (logistic regression) model to predict zero counts and a zero-truncated negative binomial model to predict positive counts. We also conducted a series of Monte Carlo simulations to demonstrate that the hurdle count model provides unbiased estimates of our sentencing data and outperforms alternative approaches. We find that black offenders with minimal to moderate criminal histories were more likely than whites to be incarcerated, and the average difference in the likelihood of incarceration increased by 10 to 44 percentage points. For the sentence length decision, we show that the difference between white and black offenders was significant but small; the "black penalty" increased across severity levels up until a sharp decline for the most serious felonies."
 
-abstract_short = "Using criminal sentencing data from 17,671 offenders in a non-guidelines state, 
-we find that black offenders with minimal to moderate criminal histories were more likely than whites to be incarcerated, 
-and black offenders with less serious offenses were sentenced to longer prison terms."
+abstract_short = "Using criminal sentencing data from 17,671 offenders in a non-guidelines state, we find that black offenders with minimal to moderate criminal histories were more likely than whites to be incarcerated, and black offenders with less serious offenses were sentenced to longer prison terms."
 
 # Featured image thumbnail (optional)
 image_preview = ""
