@@ -18,7 +18,7 @@ authors = ["Rhys Hester", "Todd K. Hartman"]
 # 6 = Book chapter
 publication_types = ["2"]
 
-# Publication name and optional abbreviated version.
+# Publication name and optional abbreviated version. 
 publication = "*Journal of Quantitative Criminology*"
 publication_short = ""
 
