@@ -23,9 +23,9 @@ publication = "*PS: Political Science and Politics*"
 publication_short = ""
 
 # Abstract and optional shortened version.
-abstract = "One-quarter of Americans falsely reported that President Obama is Muslim. We investigate whether individuals truly believe this misconception or simply express negative sentiments about the President when given the opportunity. Our results demonstrate that certain segments of society are 'motivated believers' who are predisposed to accept misinformation that supports their political views. To our surprise, we also discovered that knowledgeable citizens were just as likely to associate Obama with Islam as those who are less knowledgeable. Thus, although routinely condemned, smear campaigns appear to be quite effective at creating implicit associations between targeted political figures and false rumors."
+abstract = "Polling companies routinely reported that one-quarter of Americans believed that former President Barrack Obama was Muslim. Using an experiment called the Implicit Association Test, we investigate whether individuals truly believed this misconception or simply expressed negative sentiments about the former President when given the opportunity. Our results demonstrate that certain segments of society are 'motivated believers' who are predisposed to accept misinformation that supports their political views. To our surprise, we also discovered that knowledgeable citizens were just as likely to associate Obama with Islam as those who are less knowledgeable. Thus, although routinely condemned, smear campaigns appear to be quite effective at creating associations between targeted political figures and false rumors."
 
-abstract_short = "Using an implicit association task, we investigate whether misinformation is an accepted belief or simply a way to express negativity toward a political opponent."
+abstract_short = "Using an experiment called the Implicit Association Test, we investigate whether rumors and misinformation about Former President Obama were really believed or simply a way to express negativity about a political opponent."
 
 # Featured image thumbnail (optional)
 image_preview = ""
