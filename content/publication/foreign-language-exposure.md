@@ -25,7 +25,7 @@ publication_short = ""
 # Abstract and optional shortened version.
 abstract = "Call any company with an automated phone system in the U.S. and you will likely hear a recording like this one: 'Para continuar en español, oprima el número dos' ('to continue in Spanish, press number two'). We argue that the increased prevalence of linguistically unassimilated immigrants within one's local environment challenges a core aspect of many Americans' social and cultural competencies. We draw upon survey and experimental data to demonstrate that incidental exposure to a foreign language like Spanish, as well as local contact with immigrants who speak limited English, heightens feelings of cultural threat, which increases anti-immigrant sentiment and policy preferences."
 
-abstract_short = "Using two survey experiments and observational data, we investigate whether incidental exposure to a foreign language (e.g., Spanish) increases feelings of cultural threat and anti-immigrant policy preferences."
+abstract_short = "Using two survey experiments and observational data, we investigate whether incidental exposure to a foreign language (e.g., Spanish) increases feelings of cultural threat and support for anti-immigrant policies."
 
 # Featured image thumbnail (optional)
 image_preview = ""
