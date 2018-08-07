@@ -25,7 +25,7 @@ publication_short = ""
 # Abstract and optional shortened version.
 abstract = "We present a cost-effective technique for obtaining web-based, adult samples for experimental research in the social sciences. SMIS engages central figures in online social networks to help recruit participants among visitors to these websites, yielding sizable samples for experimental research. We present data from six samples collected using the SMIS method and compare them to those gathered by other sampling approaches such as Amazon's Mechanical Turk. While not representative of the general adult population, the diversity of SMIS samples, along with the ability to capture highly engaged citizens, can circumvent questions about the artificiality of behavior experiments entirely based on student samples and help to document sources of heterogeneous experimental treatment effects."
 
-abstract_short = "We present a cost-effective technique for obtaining web-based, adult samples for experimental research in the social sciences.|
+abstract_short = "We present a cost-effective technique for obtaining web-based, adult samples for experimental research in the social sciences."
 
 # Featured image thumbnail (optional)
 image_preview = ""
