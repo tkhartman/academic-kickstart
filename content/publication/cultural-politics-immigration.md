@@ -23,7 +23,7 @@ publication = "*Political Psychology*"
 publication_short = ""
 
 # Abstract and optional shortened version.
-abstract = "We argue that conflict over immigration largely concerns who bears the burden of cultural transaction costs, which we define as the costs associated with overcoming cultural barriers (e.g., language) to social exchange. Our framework suggests that the ability of native-born citizens to push cultural transaction costs onto immigrant out-groups serves as an important expression of social dominance. In two novel studies, we demonstrate that social dominance motives condition emotional responses to encountering cultural transaction costs, shape engagement in cultural accommodation behavior toward immigrants, and affect immigration attitudes and policy preferences."
+abstract = "We argue that conflict over immigration largely concerns who bears the burden of cultural transaction costs, which we define as the costs associated with overcoming cultural barriers (e.g., language) to social exchange. Our framework suggests that the ability of native-born citizens to push cultural transaction costs onto immigrant out-groups serves as an important expression of social dominance. In two survey experiments, we demonstrate that social dominance motives condition emotional responses to encountering cultural transaction costs, shape engagement in cultural accommodation behavior toward immigrants, and affect immigration attitudes and policy preferences."
 
 abstract_short = "In two survey experiments, we demonstrate that social dominance motives condition emotional responses to encountering cultural transaction costs, shape engagement in cultural accommodation behavior toward immigrants, and affect immigration attitudes and policy preferences."
 
