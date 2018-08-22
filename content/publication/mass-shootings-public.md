@@ -19,7 +19,7 @@ authors = ["Benjamin J. Newman", "Todd K. Hartman"]
 publication_types = ["2"]
 
 # Publication name and optional abbreviated version.
-publication = "*Political Behavior*"
+publication = "*British Journal of Political Science*"
 publication_short = ""
 
 # Abstract and optional shortened version.
