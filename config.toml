@@ -10,7 +10,7 @@ title = "Todd K Hartman"
 
 # Your copyright notice - appears in site footer.
 # To display a copyright symbol, type `&copy;`.
-copyright = "&copy; 2018 Todd K Hartman"
+copyright = "&copy; 2018 - 2021 Todd K Hartman"
 
 theme = "academic"
 enableEmoji = true
@@ -259,7 +259,7 @@ enableGitInfo = false
   
 [[menu.main]]
   name = "CV"
-  url = "https://www.dropbox.com/s/lii806i83nra360/hartman_cv.pdf?dl=0"
+  url = "https://www.dropbox.com/s/73j92r59jkwpjs7/hartman_cv.pdf?dl=0"
   weight = 2
 
 [[menu.main]]
