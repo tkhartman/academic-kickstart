@@ -1,0 +1,1558 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%% Simple LaTeX CV Template %%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%% Document Setup %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[12pt]{article}
+\RequirePackage[T1]{fontenc}
+
+\usepackage{times}
+
+\usepackage{longtable}
+\setlength{\LTleft}{0pt}
+
+% The automated optical recognition software used to digitize resume
+% information works best with fonts that do not have serifs. This
+% command uses a sans serif font throughout. Uncomment both lines (or at
+% least the second) to restore a Roman font (i.e., a font with serifs).
+% (NOTE: This requires the times package above)
+%\renewcommand{\familydefault}{\sfdefault}
+
+% This is a helpful package that puts math inside length specifications
+\usepackage{calc}
+
+% This package helps LaTeX auto-hyphenate hyphenated words if you use
+% special hyphens. For example, bio\-/mimicry will properly hyphenate
+% ``mimicry'' if necessary.
+\usepackage[shortcuts]{extdash}
+
+% Layout: Puts the section titles on left side of page
+\reversemarginpar
+
+%
+%         PAPER SIZE, PAGE NUMBER, AND DOCUMENT LAYOUT NOTES:
+%
+% The next \usepackage line changes the layout for CV style section
+% headings as marginal notes. It also sets up the paper size as either
+% letter or A4. By default, letter was used. If A4 paper is desired,
+% comment out the letterpaper lines and uncomment the a4paper lines.
+%
+% As you can see, the margin widths and section title widths can be
+% easily adjusted.
+%
+% ALSO: Notice that the includefoot option can be commented OUT in order
+% to put the PAGE NUMBER *IN* the bottom margin. This will make the
+% effective text area larger.
+%
+% IF YOU WISH TO REMOVE THE ``of LASTPAGE'' next to each page number,
+% see the note about the +LP and -LP lines below. Comment out the +LP
+% and uncomment the -LP.
+%
+% IF YOU WISH TO REMOVE PAGE NUMBERS, be sure that the includefoot line
+% is uncommented and ALSO uncomment the \pagestyle{empty} a few lines
+% below.
+%
+
+%% Use these lines for letter-sized paper
+\usepackage[paper=a4paper,
+            %includefoot, % Uncomment to put page number above margin
+            marginparwidth=1.5in,     % Length of section titles
+            marginparsep=.05in,       % Space between titles and text
+            margin=1.5cm,               % 1 inch margins
+            includemp]{geometry}
+
+%% Use these lines for A4-sized paper
+%\usepackage[paper=a4paper,
+%            %includefoot, % Uncomment to put page number above margin
+%            marginparwidth=30.5mm,    % Length of section titles
+%            marginparsep=1.5mm,       % Space between titles and text
+%            margin=25mm,              % 25mm margins
+%            includemp]{geometry}
+
+%% More layout: Get rid of indenting throughout entire document
+\setlength{\parindent}{0in}
+
+% Provides special list environments and macros to create new ones
+\usepackage[shortlabels]{enumitem}
+
+% Simpler bibsections for CV sections
+% (thanks to natbib for inspiration)
+%
+% * For lists of references with hanging indents and no numbers:
+%
+%   \begin{bibsection}
+%       \item ...
+%   \end{bibsection}
+%
+% * For numbered lists of references (with hanging indents):
+%
+%   \begin{bibenum}
+%       \item ...
+%   \end{bibenum}
+%
+%   Note that bibenum numbers continuously throughout. To reset the
+%   counter, use
+%
+%   \restartlist{bibenum}
+%
+%   at the place where you want the numbering to reset.
+
+\makeatletter
+\newlength{\bibhang}
+\setlength{\bibhang}{1em}
+\newlength{\bibsep}
+ {\@listi \global\bibsep\itemsep \global\advance\bibsep by\parsep}
+\newlist{bibsection}{itemize}{3}
+\setlist[bibsection]{label=,leftmargin=\bibhang,%
+        itemindent=-\bibhang,
+        itemsep=\bibsep,parsep=\z@,partopsep=0pt,
+        topsep=0pt}
+\newlist{bibenum}{enumerate}{3}
+\setlist[bibenum]{label=[\arabic*],resume,leftmargin={\bibhang+\widthof{[999]}},%
+        itemindent=-\bibhang,
+        itemsep=\bibsep,parsep=\z@,partopsep=0pt,
+        topsep=0pt}
+\let\oldendbibenum\endbibenum
+\def\endbibenum{\oldendbibenum\vspace{-.6\baselineskip}}
+\let\oldendbibsection\endbibsection
+\def\endbibsection{\oldendbibsection\vspace{-.6\baselineskip}}
+\makeatother
+
+%% Reference the last page in the page number
+%
+% NOTE: comment the +LP line and uncomment the -LP line to have page
+%       numbers without the ``of ##'' last page reference)
+%
+% NOTE: uncomment the \pagestyle{empty} line to get rid of all page
+%       numbers (make sure includefoot is commented out above)
+%
+\usepackage{fancyhdr,lastpage}
+\pagestyle{fancy}
+\pagestyle{empty}      % Uncomment this to get rid of page numbers
+\fancyhf{}\renewcommand{\headrulewidth}{0pt}
+\fancyfootoffset{\marginparsep+\marginparwidth}
+\newlength{\footpageshift}
+\setlength{\footpageshift}
+          {0.5\textwidth+0.5\marginparsep+0.5\marginparwidth-2in}
+\lfoot{\hspace{\footpageshift}%
+       \parbox{4in}{\, \hfill %
+%                    \arabic{page} of \protect\pageref*{LastPage} % +LP
+                    \arabic{page}                               % -LP
+                    \hfill \,}}
+
+% Finally, give us PDF bookmarks
+\usepackage{color,hyperref}
+\definecolor{darkblue}{rgb}{0.0,0.0,0.3}
+\hypersetup{colorlinks,breaklinks,
+            linkcolor=darkblue,urlcolor=darkblue,
+            anchorcolor=darkblue,citecolor=darkblue}
+
+\usepackage{enumitem}
+
+%%%%%%%%%%%%%%%%%%%%%%%% End Document Setup %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%% Helper Commands %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%% HEADING AT TOP OF CURRICULUM VITAE
+
+% The title (name) with a horizontal rule under it
+% (optional argument typesets an object right-justified across from name
+%  as well)
+%
+% Usage: \makeheading{name}
+%        OR
+%        \makeheading[right_object]{name}
+%
+% Place at top of document. It should be the first thing.
+% If ``right_object'' is provided in the square-braced optional
+% argument, it will be right justified on the same line as ``name'' at
+% the top of the CV. For example:
+%
+%       \makeheading[\emph{Curriculum vitae}]{Your Name}
+%
+% will put an emphasized ``Curriculum vitae'' at the top of the document
+% as a title. Likewise, a picture could be included:
+%
+%   \makeheading[{\includegraphics[height=1.5in]{my_picture}}]{Your Name}
+%
+% the picture will be flush right across from the name. For this example
+% to work, make sure the extra set of curly braces is included. Also
+% makes ure that \usepackage{graphicx} is somewhere in the preamble.
+\newcommand{\makeheading}[2][]%
+        {\hspace*{-\marginparsep minus \marginparwidth}%
+         \begin{minipage}[t]{\textwidth+\marginparwidth+\marginparsep}%
+             {\LARGE \bfseries #2 \hfill #1}\\[-0.15\baselineskip]%
+                 \rule{\columnwidth}{1pt}%
+         \end{minipage}}
+
+%%% SECTION HEADINGS
+
+% The section headings. Flush left in small caps down pseudo-margin.
+%
+% Usage: \section{section name}
+\renewcommand{\section}[1]{\pagebreak[3]%
+    \vspace{1.3\baselineskip}%
+    \phantomsection\addcontentsline{toc}{section}{#1}%
+    \noindent\llap{\scshape\smash{\parbox[t]{\marginparwidth}{\hyphenpenalty=10000\raggedright #1}}}%
+    \vspace{-\baselineskip}\par}
+
+%%% LISTS
+
+% This macro alters a list by removing some of the space that follows the list
+% (is used by lists below)
+\newcommand*\fixendlist[1]{%
+    \expandafter\let\csname preFixEndListend#1\expandafter\endcsname\csname end#1\endcsname
+    \expandafter\def\csname end#1\endcsname{\csname preFixEndListend#1\endcsname\vspace{-0.6\baselineskip}}}
+
+% These macros help ensure that items in outer-type lists do not get
+% separated from the next line by a page break
+% (they are used by lists below)
+\let\originalItem\item
+\newcommand*\fixouterlist[1]{%
+    \expandafter\let\csname preFixOuterList#1\expandafter\endcsname\csname #1\endcsname
+    \expandafter\def\csname #1\endcsname{\let\oldItem\item\def\item{\pagebreak[2]\oldItem}\csname preFixOuterList#1\endcsname}
+    \expandafter\let\csname preFixOuterListend#1\expandafter\endcsname\csname end#1\endcsname
+    \expandafter\def\csname end#1\endcsname{\let\item\oldItem\csname preFixOuterListend#1\endcsname}}
+\newcommand*\fixinnerlist[1]{%
+    \expandafter\let\csname preFixInnerList#1\expandafter\endcsname\csname #1\endcsname
+    \expandafter\def\csname #1\endcsname{\let\oldItem\item\let\item\originalItem\csname preFixInnerList#1\endcsname}
+    \expandafter\let\csname preFixInnerListend#1\expandafter\endcsname\csname end#1\endcsname
+    \expandafter\def\csname end#1\endcsname{\csname preFixInnerListend#1\endcsname\let\item\oldItem}}
+
+% An itemize-style list with lots of space between items
+%
+% Usage:
+%   \begin{outerlist}
+%       \item ...    % (or \item[] for no bullet)
+%   \end{outerlist}
+\newlist{outerlist}{itemize}{3}
+    \setlist[outerlist]{label=\enskip\textbullet,leftmargin=*}
+    \fixendlist{outerlist}
+    \fixouterlist{outerlist}
+
+% An environment IDENTICAL to outerlist that has better pre-list spacing
+% when used as the first thing in a \section
+%
+% Usage:
+%   \begin{lonelist}
+%       \item ...    % (or \item[] for no bullet)
+%   \end{lonelist}
+\newlist{lonelist}{itemize}{3}
+    \setlist[lonelist]{label=\enskip\textbullet,leftmargin=*,partopsep=0pt,topsep=0pt}
+    \fixendlist{lonelist}
+    \fixouterlist{lonelist}
+
+% An itemize-style list with little space between items
+%
+% Usage:
+%   \begin{innerlist}
+%       \item ...    % (or \item[] for no bullet)
+%   \end{innerlist}
+\newlist{innerlist}{itemize}{3}
+    \setlist[innerlist]{label=\enskip\textbullet,leftmargin=*,parsep=0pt,itemsep=0pt,topsep=0pt,partopsep=0pt}
+    \fixinnerlist{innerlist}
+
+% An environment IDENTICAL to innerlist that has better pre-list spacing
+% when used as the first thing in a \section
+%
+% Usage:
+%   \begin{loneinnerlist}
+%       \item ...    % (or \item[] for no bullet)
+%   \end{loneinnerlist}
+\newlist{loneinnerlist}{itemize}{3}
+    \setlist[loneinnerlist]{label=\enskip\textbullet,leftmargin=*,parsep=0pt,itemsep=0pt,topsep=0pt,partopsep=0pt}
+    \fixendlist{loneinnerlist}
+    \fixinnerlist{loneinnerlist}
+
+%%% EXTRA SPACE
+
+% To add some paragraph space between lines.
+% This also tells LaTeX to preferably break a page on one of these gaps
+% if there is a needed pagebreak nearby.
+\newcommand{\blankline}{\quad\pagebreak[3]}
+\newcommand{\halfblankline}{\quad\vspace{-0.5\baselineskip}\pagebreak[3]}
+\newcommand{\blankspace}{\vspace*{.25cm}}
+
+%%% FORMATTING MACROS
+
+% Provides a linked \doi{#1} that links doi:#1 to http://dx.doi.org/#1
+\usepackage{doi}
+% To change the text before the DOI, adjust this command
+%\renewcommand\doitext{doi:}
+
+% Provides a linked \url{#1} that doesn't require escape characters
+\usepackage{url}
+
+% You can adjust the style \url{} uses here:
+% (options are: same, rm, sf, tt; defaults to tt)
+\urlstyle{same}
+
+% For \email{ADDRESS}, links ADDRESS to the url mailto:ADDRESS
+% (uncomment to typeset the e\-/mail address in typewriter font;
+%  otherwise, will be typeset in the \urlstyle above)
+%\DeclareUrlCommand\emaillink{\urlstyle{tt}}
+\providecommand*\emaillink[1]{\nolinkurl{#1}}
+\providecommand*\email[1]{\href{mailto:#1}{\emaillink{#1}}}
+
+\providecommand\BibTeX{{B\kern-.05em{\sc i\kern-.025em b}\kern-.08em \TeX}}
+\providecommand\Matlab{\textsc{Matlab}}
+
+% Custom hyphenation rules for words that LaTeX has trouble with
+\hyphenation{bio-mim-ic-ry bio-in-spi-ra-tion re-us-a-ble pro-vid-er Media-Wiki}
+
+%%%%%%%%%%%%%%%%%%%%%%%% End Helper Commands %%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%
+%
+%
+%
+%
+%
+%
+%
+%
+%
+%%%%%%%%%%%%%%%%%%%%%%%%% Begin CV Document %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+\makeheading{TODD K. HARTMAN}
+
+\section{Contact Information}
+
+% NOTE: Mind where the & separators and \\ breaks are in the following
+%       table. Table is one row made up of three parboxes. The left
+%       parbox has address info, the middle parbox has a vertical bar,
+%       and the right parbox has phone and electronic contact
+%       information.
+%
+% MACROS: \rcollength is the width of the right column of the table
+%             (adjust it to your liking; default is 1.85in).
+%         \spacewidth is width of area between left and right boxes.
+%
+\newlength{\rcollength}\setlength{\rcollength}{2.25in}% 1.85in is the original default
+\newlength{\spacewidth}\setlength{\spacewidth}{20pt}
+%
+\begin{tabular}[t]{@{}p{\textwidth-\rcollength-\spacewidth}@{}p{\spacewidth}@{}p{\rcollength}}%
+
+% Address box
+\parbox{\textwidth-\rcollength-\spacewidth}{%
+\href{http://www.sheffield.ac.uk/smi/}{Sheffield Methods Institute}\\
+\href{http://www.sheffield.ac.uk/}{The University of Sheffield}\\
+219 Portobello Street\\
+Sheffield  S1 4DP\\
+United Kingdom
+}
+% Keep this Ampersand for the Table
+&
+% Uncomment to add a vertical bar in middle of contact information
+%{\vrule width 0.5pt}
+\parbox[m][5\baselineskip]{\spacewidth}{} &
+
+% Non-snail-mail contact information
+\parbox{\rcollength}{%
+\email{t.k.hartman@sheffield.ac.uk}\\
+\url{https://tkhartman.netlify.app/}\\
+\href{https://scholar.google.com/citations?user=d07BFScAAAAJ}{G Scholar: d07BFScAAAAJ}\\
+\href{https://orcid.org/0000-0001-9136-2784}{ORCID: 0000-0001-9136-2784}\\
+\href{https://github.com/tkhartman}{Github: tkhartman}
+}
+\end{tabular}
+
+\blankline
+
+\section{Brief Bio}
+Quantitative social scientist with international expertise in the design and analysis of complex surveys and experiments. Research investigates the psychological underpinnings of public opinion and mass behaviour and has been featured in media outlets like \textit{The Washington Post}, \textit{The Guardian}, \textit{The Independent}, and \textit{The Economist}. Associate Editor of \textit{Political Studies}; Editorial Board Member of \textit{Political Psychology}; Co-convenor of the Political Psychology Specialist Group (Political Studies Association); Statistical Ambassador for the Royal Statistical Society.\\
+\href{https://harzing.com/resources/publish-or-perish/tutorial/metrics/h-and-g-index}{G-index}: 32; \href{https://harzing.com/resources/publish-or-perish/tutorial/metrics/h-and-g-index}{H-index: 16}.
+
+\halfblankline
+
+\section{Current Appointments}
+Professor of Quantitative Social Science, \href{https://www.socialsciences.manchester.ac.uk/social-statistics/}{University of Manchester} \hfill {Aug 2021\,--\,}
+
+
+\href{https://rss.org.uk/membership/faq/rss-statistical-ambassadors/#:~:text=The%20RSS%20statistical%20ambassadors%20programme,media%2C%20schools%20and%20wider%20public.}
+{Statistical Ambassador (Quantitative Literacy)}, \href{http://www.rss.org.uk/}{Royal Statistical Society}  \hfill {2016\,--\,}
+
+Senior Fellow of the \href{https://www.heacademy.ac.uk/recognition-accreditation/hea-fellowships}
+{UK Higher Education Academy}  (Ref: PR120023)  \hfill {2016\,--\,}
+
+\halfblankline
+
+\section{Previous Appointments}
+Senior Lecturer in Quantitative Research Methods, \href{http://www.sheffield.ac.uk/}{University of Sheffield} \hfill {2018\,--\,Aug 21}
+
+Lecturer in Quantitative Research Methods, \href{http://www.sheffield.ac.uk/}{University of Sheffield} \hfill {2014\,--\,18}
+
+Assistant Professor of Political Science, \href{http://www.appstate.edu/}{Appalachian State Un} \hfill {2009\,--\,14}
+%Lecturer of Political Science \hfill {2008\,--\,2009}
+
+%Survey Center Research Assistant \hfill {2006\,--\,2008} \\
+%Adjunct Instructor of Political Science \hfill {2004\,--\,2006}
+%\begin{innerlist}
+%	\item[] \href{http://www.stonybrook.edu/polsci/}{Department of Political Science}, \href{http://www.stonybrook.edu/}{Stony Brook University}
+%\end{innerlist}
+
+\halfblankline
+
+\section{Academic Leadership}
+Executive Board Member, Sheffield Methods Institute  \hfill {2014\,--\,21}\\
+Director, Sheffield Q-Step Centre (\textbf{Funded Budget: £1,408,879}) \hfill {2017\,--\,21}\\
+%\begin{itemize}[noitemsep, leftmargin=0pt]
+Director of Survey Research, \href{http://cerpa.appstate.edu/}{Ctr for Econ Research \& Pol Analysis} \hfill {2009\,--\,14}
+Director of Learning \& Teaching, Sheffield Methods Institute \hfill {2014\,--\,18}
+	\begin{innerlist}
+		\item[] Co-developed MA in Soc Research \& BSc in Quantitative Soc Sci
+	\end{innerlist}
+Director (Founding), BA/BSc in Politics, Philosophy \& Economics \hfill {2019\,--\,21}
+	\begin{innerlist}
+		\item[] Responsible for structure, curriculum, \& recruitment of PPE course
+	\end{innerlist}
+Convenor, Political Psychology Specialist Group, PSA  \hfill {2019\,--}
+	\begin{innerlist}
+		\item[] Co-organized the 2nd (2-day) \& 3rd (5-day virtual) Annual Conferences
+	\end{innerlist}
+Advisory Board, COVID-19 Crisis Project; Nuffield Foundation  \hfill {2020\,--}\\
+Advisory Board, \href{https://livingwithdata.org/}{Living with Data} Project; Nuffield Foundation  \hfill {2019\,--}\\
+Advisory Board, \href{https://www.nuffieldfoundation.org/project/immigration-judicial-reviews}{Immigration Judicial Reviews}; Nuffield Foundation  \hfill {2017\,--\,19}\\
+Associate Editor, \emph{Political Studies}  \hfill {2020\,--}\\
+Editorial Board, \emph{Political Psychology}  \hfill {2020\,--}\\
+Editorial Board, \emph{PS: Political Science \& Politics}  \hfill {2015\,--\,18}
+
+\halfblankline
+
+\section{Education}
+Ph.D., \href{http://www.stonybrook.edu/polsci/}{Political Science},  
+    \href{http://www.stonybrook.edu/}{Stony Brook University (SUNY)}  \hfill {2009} 
+\begin{innerlist}
+        \item[] Exams: Political psychology, quantitative methods, American politics
+%        \item[] Dissertation: \href{http://gradworks.umi.com/33/93/3393648.html}
+%        {\emph{The Effects of Policy Metaphors on Political Attitudes}}
+%        \item[] Cmte:
+%                \href{http://www.polisci.umn.edu/people/profile.php?UID=lavine}
+%                   {Howard Lavine}, 
+%              \href{http://www.stonybrook.edu/commcms/polisci/people/professors/feldman.html}
+%                   {Stanley Feldman},
+%              \href{http://www.stonybrook.edu/commcms/polisci/people/professors/lodge.html}
+%                   {Milton Lodge},
+%			 \&
+%              \href{http://fas-polisci.rutgers.edu/lau/}
+%                   {Richard Lau}
+\end{innerlist}
+
+\halfblankline
+
+M.A., \href{http://internationalrelations.sfsu.edu/}{International Relations}, 
+       \href{http://www.sfsu.edu/}{San Francisco State University} \hfill {2003} 
+    \begin{innerlist}
+        \item[] ``Talking the Gun Out of Irish Politics: Framing the Peace Process''
+    \end{innerlist}
+
+\halfblankline
+
+B.A., \href{http://ps.ucdavis.edu/undergraduate/majors-and-minors/international-relations-major} {International Relations}, 
+    \href{http://www.ucdavis.edu/}{University of California at Davis} \hfill {1998} 
+    \begin{innerlist}
+        \item[] Certificate in \href{http://www.intergerm.uni-bayreuth.de/}
+        {Intercultural German Studies}, 
+        \href{http://www.uni-bayreuth.de/en/}
+        {Universit\"at Bayreuth}
+        \item[] Work Study, \href{http://www.bmw-plant-munich.com/lowband/com/en/index.html}
+        {Bayerische Motoren Werke (BMW - Munich)}
+    \end{innerlist}    
+
+\halfblankline
+
+\section{Books}
+\begin{bibenum}
+\item Bell, A., {Hartman, T. K.}, Piekut, A., Rae, A., \& Taylor, M. (2020) \href{https://uk.sagepub.com/en-gb/eur/making-sense-of-data-in-the-media/book260741}{\textit{Making Sense of Data in the Media}}. SAGE Publishing.
+\end{bibenum}
+
+\section{Refereed Publications}
+
+\begin{bibenum}
+
+	\item Hartman. T. K., Marshall, M., Stocks, T. V. A., McKay, R., M., 
+	Bennett, Butter, S., Gibson Miller, J.,  Hyland, P., Levita, L., Martinez, A. P., 
+	Mason, L., McBride, O., Murphy, J., Shevlin, M., Vallières, F., 
+	\& Bentall, R. P.  (Forthcoming). 
+		\href{https://psyarxiv.com/mz5sw/}{Different conspiracy theories have 
+		different psychological and social determinants: Comparison of three 
+		theories about the origins of the COVID-19 virus in a representative 
+		sample of the UK population}.
+		\emph{Frontiers in Political Science}.
+	
+	\item Shevlin, M.,  McBride, O., Murphy, J., Hartman, T. K., Butter, S., 
+	Bennett, K. M., Jilly Gibson-Miller, Levita, L., Martinez, A. P., Mason, L., 
+	McKay, R., Stocks, T. V. A.,  \& Bentall, R. P. (Forthcoming). 
+		\href{https://doi.org/10.1017/S0033291721001665}{Refuting the myth 
+		of a ‘tsunami’ of mental ill-health in populations affected by 
+		COVID-19: Evidence that response to the pandemic is heterogenous, 
+		not homogeneous}.
+		\emph{Psychological Medicine}. [IF (2019): 5.81]
+
+	\item Hartman, T. K.,  Stocks, T. V. A., McKay, R., Gibson Miller, J., Levita, L., 
+	Martinez, A. P., Mason, L., McBride, O., Murphy, J., Shevlin, M., Bennett, K., 
+	Hyland, P., Karatzias, T., Vallières, F., \& Bentall, R. P. (Forthcoming). 
+		\href{https://doi.org/10.1177/1948550620978023}{The authoritarian 
+		dynamic during the COVID-19 pandemic: Effects on nationalism and 
+		anti-Immigrant sentiment}.
+		\emph{Social Psychological and Personality Science}. [IF (2019): 4.38]
+	
+	\item Zavlis, O., Butter, S., Bennett, K., Hartman, T. K., Hyland, P., 
+	Mason, L., McBride, O., Murphy, J., Gibson-Miller, J., Levita, L., 
+	Martinez, A. P., Shevlin, M., Stocks, T. V. A., Vallières, F., 
+	\& Bentall, R. P. (Forthcoming). 
+		\href{https://doi.org/10.1017/S0033291721000635}{How does the COVID-19 
+		pandemic impact on population mental health? A network analysis of 
+		COVID influences on depression, anxiety and traumatic stress in the 
+		UK Population}.
+		\emph{Psychological Medicine}. [IF (2019): 5.81]
+	
+	\item Hyland. P., Vallières, F., Shevlin, M.,  Bentall, R. P., McKay, R., 
+	Hartman, T. K., McBride, O., \& Murphy, J. (Forthcoming). 
+		\href{https://doi.org/10.1016/j.puhe.2021.04.009}{Resistance to 
+		COVID-19 vaccination has increased in Ireland and the UK during the pandemic}.
+		\emph{Public Health} [IF (2019): 1.77]
+	
+	\item Gibson Miller, J., Zavlis, O., Hartman, T. K., Bennett, K., Butter, S., 
+	Levita, L., Martinez, A. P., Mason, L, McBride, O., McKay, R., Murphy, J., 
+	Shevlin, M., Stocks, T. V. A., \& Bentall, R. P. (Forthcoming). 
+		Psychological factors influencing protective behaviours during 
+		the COVID-19 pandemic: Capability, opportunity and motivation. 
+		In F. Gabrielli (Ed.), \textit{Anxiety, Uncertainty, and Resilience 
+		During the Pandemic Period - Anthropological and Psychological 
+		Perspectives.} London: IntechOpen.
+	
+	\item McBride, O., Butter, S., Murphy, J., Shevlin, M., Hartman, T. K., 
+	Hyland, P., McKay, R., Bennett, K., Gibson-Miller, J.,  Levita, L., Mason, L., 
+	Martinez, A. P.,  Stocks, T. V. A., Vallières, F., Karatzias, T., Valiente, C., 
+	Vazquez, C., \& Bentall, R. P.  (Forthcoming). 
+		\href{https://psyarxiv.com/kthfn/}{Context, design and conduct of 
+		the longitudinal COVID-19 Psychological Research Consortium 
+		(C19PRC) Study – Wave 3}.  
+		\emph{International Journal of Methods in Psychiatric Research} [IF (2019): 2.34]
+		
+	\item Murphy, J., Vallières, F., Bentall, R., Shevlin, M.,  McBride, O., 
+	Hartman, T. K., McKay, R., Bennett, K. M., Mason, L., Jilly Gibson-Miller,  
+	Levita, L., Martinez, A. P., Stocks, T. V. A.,  Karatzias, T., \& Hyland, P. (2021).
+		\href{https://doi.org/10.1038/s41467-020-20226-9}{Psychological characteristics 
+		associated with COVID-19 vaccine hesitancy or resistance in the UK and Ireland}. 
+		\emph{Nature Communications, 12}, 1-15. [IF (2019): 12.12]
+
+	\item Bentall, R., Lloyd, A., Bennett, K., McKay, R., Mason, L., Murphy, J., 
+	McBride, O., Hartman, T. K., Gibson-Miller, J., Levita, L., Martinez, A. P., 
+	Stocks, T. V. A., Vallières, F., Hyland, P., Karatzias, T., \& Shevlin, M. (2021). 
+		\href{https://doi.org/10.1371/journal.pone.0246339}{Pandemic buying: 
+		Testing a psychological model of over-purchasing and panic buying 
+		using data from the United Kingdom and the Republic of Ireland 
+		during the early phase of the COVID-19 pandemic}.
+		\emph{PloS one, 16}, e0246339. [IF (2019): 2.74]
+	
+	\item McBride, O., Murphy, J., Shevlin, M., Gibson-Miller, J., Hartman, T. K., 
+	Hyland, P., Levita, L., Mason, L., Martinez, A. P., McKay, R., Stocks, T. V. A., 
+	Bennett, K., Vallières, F., Karatzias, T., Valiente, C., Vazquez, C., \& Bentall, R. P. (2021). 
+		\href{https://doi.org/10.1002/mpr.1861}{Monitoring the psychological, 
+		social, and economic impact of the COVID-19 pandemic in the population: 
+		Context, design and conduct of the longitudinal COVID-19 Psychological 
+		Research Consortium (C19PRC) Study}.
+		\emph{International Journal of Methods in Psychiatric Research, 30}, e1861. [IF (2019): 2.34]
+	
+	\item Johnston, R., Pattie, C. J., \& {Hartman, T. K.}. (2021). 
+		\href{https://doi.org/10.1080/13511610.2020.1746905}
+		{Who follows the leader? Leadership heuristics and valence voting 
+		at the UK’s 2016 Brexit referendum}.
+		\emph{Innovation: The European Journal of Social Science Research, 34}, 
+		28-43. [IF (2019): 1.28]
+
+	\item Johnston, R., Pattie, C. J., \& {Hartman, T. K.}. (2021). 
+		\href{https://10.1080/17457289.2019.1582534}
+		{Spending, canvassing and electoral success in marginal constituencies: 
+		England and Scotland in 2017}. 
+		\emph{Journal of Elections, Public Opinion \& Parties, 31}, 59-76. [IF: 1.63]
+		
+	\item Hartman, T. K., Kennedy, H., Jones, R., \& Steedman, R. (2020). 
+		\href{https://10.1177/2053951720935616}{Public perceptions of 'good' data management}.
+	 	\emph{Big Data \& Society, 7}, 2053951720935616. [IF (2019): 4.58]
+		
+	\item Shevlin, M.,  McBride, O., Murphy, J. Jilly Gibson-Miller, Hartman, T. K., 
+	Levita, L., Mason, L., Martinez, A. P., McKay, R., Stocks, T. V. A., 
+	Bennett, K. M., Hyland, P., Karatzias, T., \& Bentall, R. P. (2020). 
+		\href{https://10.1192/bjo.2020.109}{Anxiety, depression, traumatic stress, 
+		and COVID-19 related anxiety in the UK general population during the COVID-19 pandemic}.
+		\emph{BJPsych Open, 6}, e125, 1-9. [IF (2019): 2.29]
+
+	\item Shevlin, M., Nolan, E., Owczarek, M., McBride, O., Murphy, J. Jilly Gibson-Miller, 
+	Hartman, T. K., Levita, L., Mason, L., Martinez, A. P., McKay, R., Stocks, T. V. A., 
+	Bennett, K. M., Hyland, P., \& Bentall, R. P. (2020). 
+		\href{https://10.1111/bjhp.12430}{COVID-19 related anxiety predicts somatic 
+		symptoms in the UK population}.
+	 	\emph{British Journal of Health Psychology, 25}, 875-882. [IF (2019): 2.91]
+
+	\item Gibson Miller, J., Hartman, T. K., Levita, L., Martinez, A. P., Mason, L, 
+	McBride, O., McKay, R., Murphy, J., Shevlin, M., Stocks, T. V. A., Bennett, K., 
+	\& Bentall, R. P. (2020). 
+		\href{https://10.1111/bjhp.12426}{Capability, opportunity and motivation 
+		to enact hygienic practices in the early stages of the COVID-19 outbreak in the UK}.
+		\emph{British Journal of Health Psychology, 25}, 856-864. [IF (2019): 2.91]
+		
+    \item {Hartman, T. K.}, \& Newman, B. J. (2019).
+          \href{https://10.1017/S0007123418000467}
+          {Accounting for pre-treatment exposure in panel data: 
+          Re-estimating the effect of mass public shootings}.
+          \emph{British Journal of Political Science, 49}, 1567-1576. [IF: 3.81]
+
+    \item Newman, B. J., \& {Hartman, T. K.} (2019).
+          \href{https://10.1017/S0007123417000333}
+          {Mass shootings and public support for gun control}.
+          \emph{British Journal of Political Science, 49}, 1527-1553. [IF: 3.81]
+      
+      	\item Pattie, C. J., {Hartman, T. K.}, \& Johnston, R. (2019). 
+	    \href{https://10.1016/j.polgeo.2019.02.010}
+		{Not all campaigns are created equal: Temporal and spatial variability 
+		in constituency campaign effects in Great Britain, 1997 - 2015}. 
+	 	\emph{Political Geography, 71}, 36-46. [IF: 3.04]
+	 	    
+	\item Johnston, R., {Hartman, T. K.}, \& Pattie, C. J. (2019). 
+		\href{https://10.1007/s11135-018-0819-1}
+		{Predicting general election outcomes: Campaigns and changing voter 
+		knowledge at the 2017 General Election in England}.
+		\emph{Quality \& Quantity, 53}, 1369-1389. [IF: 1.34]
+	 	    
+    \item Pattie, C. J., {Hartman, T. K.}, \& Johnston, R. (2019).
+    	\href{https://10.1080/00344893.2018.1555676}
+    	{A close-run thing? Accounting for changing overall turnout in UK General Elections}.
+    	\emph{Representation, 55}, 101-116. [IF: 0.44]
+
+    \item Johnston, R., {Hartman, T. K.}, \& Pattie, C. J. (2019). 
+    		\href{https://10.1016/j.electstud.2018.12.005}
+    		{Feelings about party leaders as a voter's heuristic -- 
+    		what happens when the leaders change?}.
+        \emph{Electoral Studies, 59}, 164-170. [IF: 1.04]
+          
+	\item Johnston, R., Pattie, C. J., \& {Hartman, T. K.}. (2019). 
+		\href{https://10.3366/scot.2019.0263}
+		{Local knowledge, local learning and predicting election outcomes: 
+		Voter assessments of likely party success in Scotland's constituencies 
+		at the 2015 and 2017 general elections}.
+		\emph{Scottish Affairs, 28}, 1-31. [IF: 0.41]
+		
+	\item Stanley, L., \& {Hartman, T. K.} (2018).
+          \href{https://10.1177/0032321717731661}
+          {Tax preferences, fiscal transparency, and the meaning of welfare: 
+          An experimental study}. 
+          \emph{Political Studies, 66}, 839-850. [IF: 1.62]
+          
+	\item Johnston, R., Rossiter, D., {Hartman, T. K.}, Pattie, C. J., 
+		   Manley, D. J. \&  Jones, K. (2018). 
+		  \href{https://10.1177/1470785318778247}
+		  {Exploring constituency-level estimates for the 2017 British General Election}.
+		  \emph{International Journal of Market Research, 60}, 463-483. [IF: 0.73]\\
+		  \textit{Won best article of the year (2019 Market Research Society Silver Medal)}
+
+	\item Johnston, R, Rossiter, D., Manley, D. J., Pattie, C. J., 
+		  {Hartman, T. K.}, \& Jones, K. (2018).
+		  \href{https://10.1111/geoj.12240}
+		  {Coming full circle: 
+		  The 2017 UK General Election and the changing electoral map}. 
+		  \emph{The Geographical Journal, 184}, 100-108. [IF: 2.36]
+          
+	\item Johnston, R., Pattie, C. J., {Hartman, T. K.}, Manley, D. J., 
+		  Rossiter, D., \& Jones, K. (2018).
+		  \href{https://10.1080/14702541.2017.1409362}
+		  {Scotland's electoral geography 
+		  differed from the rest of Britain's in 2017 (and 2015) - 
+		  Exploring its contours}. 
+		  \emph{Scottish Geographical Journal, 134}, 24-38. [IF: 0.81]
+          
+    \item Pattie, C. J., {Hartman, T. K.}, \& Johnston, R. (2017).
+          \href{https://10.1177/1369148117718710}
+          {Incumbent parties, incumbent MPs and the effectiveness of 
+          constituency campaigns: Evidence from the 2015 UK general election}.
+           \emph{British Journal of Politics \& International Relations, 19}, 824-841. [IF: 1.54]
+          
+    \item {Hartman, T. K.}, Pattie, C. J., \& Johnston, R. (2017).
+    		\href{https://10.1016/j.electstud.2017.06.005}
+          {Learning on the job? Adapting party campaign strategy 
+          to changing information on the local political context}. 
+          \emph{Electoral Studies, 49}, 128-135. [IF: 1.20]
+          
+    \item Hester, R., \& {Hartman, T. K.} (2017). 
+          \href{https://10.1007/s10940-016-9283-z}
+          {Conditional race disparities in criminal sentencing: 
+          A test of the liberation hypothesis from a non-guidelines state}. 
+          \emph{Journal of Quantitative Criminology, 33}, 77-100. [IF 4.32]
+          
+    \item Newman, B. J., {Hartman, T. K.}, Lown, P., \& Feldman, S. (2015). 
+          \href{https://10.1017/S0007123413000410}
+          {Easing the heavy hand: Humanitarian concern, empathy, and 
+          opinion on immigration}. 
+          \emph{British Journal of Political Science, 45}, 583-607. [IF: 3.12]
+           
+    \item Newman, B. J., Velez, Y. R., {Hartman, T. K.}, \& Bankert, A. (2015). 
+          \href{https://10.1111/pops.12069}
+          {Are citizens `receiving the treatment?' Assessing the validity 
+          of contextual theories of public opinion and political behavior}. 
+          \emph{Political Psychology, 36}, 123-131. [IF: 2.09]
+
+    \item {Hartman, T. K.}, Newman, B. J., \& Bell, C. S. (2014). 
+          \href{https://10.1007/s11109-013-9231-7}
+          {Decoding prejudice toward Hispanics: 
+			Group cues and public reactions to threatening immigrant behavior}.
+          \emph{Political Behavior, 36}, 143-163. [IF: 1.69]
+  
+    \item Newman, B. J., {Hartman, T. K.}, \& Taber, C. S. (2014). 
+          \href{https://10.1111/pops.12047}
+          {Social dominance and the cultural politics of immigration}. 
+          \emph{Political Psychology, 35}, 165-186. [IF: 2.38]
+
+    \item Cassese, E., Huddy, L., {Hartman, T. K.}, Mason, L., 
+          \& Weber, C. R. (2013). 
+          \href{https://10.1017/S1049096513001029}
+          {Socially-Mediated Internet Surveys (SMIS): 
+          Recruiting participants for online experiments}. 
+          \emph{PS: Political Science and Politics, 46}, 775-784. [IF: 0.65]
+
+    \item Newman, B. J., {Hartman, T. K.}, \& Taber, C. S. (2012). 
+          \href{https://10.1111/j.1467-9221.2012.00904.x}
+          {Foreign language exposure, cultural threat, and opposition to immigration}. 
+          \emph{Political Psychology, 33}, 635-657. [IF: 1.42]
+
+    \item {Hartman, T. K.}, \& Newmark, A. J. (2012). 
+          \href{https://10.1017/S1049096512000327}
+          {Motivated reasoning, political sophistication, 
+          and associations between President Obama and Islam}. 
+          \emph{PS: Political Science and Politics, 45}, 449-455. [IF: 0.38]
+
+    \item {Hartman, T. K.} (2012). 
+          \href{https://10.1080/10584609.2012.694983}
+          {Toll booths on the information superhighway? 
+          Policy metaphors in the case of net neutrality}. 
+          \emph{Political Communication, 29}, 278-298. [IF: 2.42]
+
+    \item {Hartman, T. K.}, \& Weber, C. R. (2009). 
+          \href{https://10.1007/s11109-009-9088-y}
+          {Who said what? The effects of source cues in issue frames}. 
+          \emph{Political Behavior, 31}, 537-558. [IF: 0.87]
+          
+\end{bibenum}
+
+\halfblankline
+
+\section{Other Publications}
+\begin{bibenum}    
+\item Levita, L., Gibson Miller, J., Hartman, T. K., Murphy, J., Shevlin, M., McBride, O., McKay, R., Mason, L., Martinez, A. P., Stocks, T. V. A., Bennett, K., \& Bentall, R. P. (2020).
+\href{https://psyarxiv.com/uq4rn/}{Report 1: Impact of Covid-19 on young people aged 13-24 in the UK- preliminary findings}.
+
+
+\item Levita, L., Gibson Miller, J., Hartman, T. K., Murphy, J., Shevlin, M., McBride, O., Mason, L., Martinez, A. P., Bennett, K., Stocks, T. V. A, McKay, R., \& Bentall, R. P. (2020). 
+\href{https://psyarxiv.com/s32j8/}{Report 2: Impact of Covid-19 on young people aged 13-24 in the UK- preliminary findings}.
+
+
+\item Johnston, R., Pattie, C., \& {Hartman, T.}. (2020, April 24).
+\href{https://blogs.lse.ac.uk/politicsandpolicy/red-wall-local-opinion/}{Testing the `wisdom of the crowds' argument: local opinion in the 43 `Red Wall' constituencies that Labour lost}. [Blog post]. \textit{British Politics and Policy, London School of Economics and Political Science}.
+
+\item Hughes, N., \& {Hartman, T.}. (2019). ``Young adults in court: Shrinking numbers and increasing disparities.'' Report prepared for the Transition to Adulthood Alliance convened and funded by the Barrow Cadbury Trust.
+
+\item Kennedy, H., {Hartman, T.}, Jones, R., \& Steedman, R. (2019). ``Public views on data management.'' Report prepared for the BBC.
+
+\item Johnston, R., Pattie, C., \& {Hartman, T.}. (2019, March 26).
+\href{https://blogs.lse.ac.uk/politicsandpolicy/the-marginal-effects-of-campaigning-in-marginal-seats/}
+{The marginal effects of campaigning in marginal seats}. 
+[Blog post]. \textit{British Politics and Policy, London School of Economics and Political Science}.
+
+\item Johnston, R., Jones, K., Manley, D.,  Pattie, C., {Hartman, T.}, \& Rossiter, D. (2018, May 30).
+\href{http://blogs.lse.ac.uk/politicsandpolicy/constituency-level-estimates/}
+{General election polling goes geographical: The accuracy and value of constituency-level estimates}. 
+[Blog post]. \textit{British Politics and Policy, London School of Economics and Political Science}.
+
+Also published in 
+\href{http://www.democraticaudit.com/2018/06/06/general-election-polling-goes-geographical-the-accuracy-and-value-of-constituency-level-estimates/}{\textit{Democratic Audit UK}} (2018 June 6). 
+
+\item Newman, B. J., \& Hartman, T. K. (2017, October 4). 
+\href{https://www.washingtonpost.com/news/monkey-cage/wp/2017/10/03/americans-who-live-closer-to-a-mass-shooting-are-more-likely-to-support-gun-regulation/}{Americans who live closer to a mass shooting are more likely to support gun regulation}. [Blog post].
+    \textit{Monkey Cage, The Washington Post}.  
+
+\item Johnston, R., Rossiter, D., Pattie, C. J., {Hartman, T. K.}, Manley, D. J., \& Jones, K. (2017, September 1).
+\href{https://www.parliament.uk/documents/lords-committees/political-polling-digital-media/Political-Polling-and-Digital-Media-Committee-Oral-and-Written-Evidence.pdf}
+{Forecasting the 2017 General Election result by constituency: Written evidence submitted to the House of Lords Select Committee on Political Polling and Digital Media}.\\
+Also see the \href{https://publications.parliament.uk/pa/ld201719/ldselect/ldppdm/106/106.pdf}
+{Report of Session 2017-19, the Politics of Polling}.
+
+        \item Hartman, T. K. (2017, June 8). 
+    \href{https://theconversation.com/ge2017-can-you-trust-that-surprise-exit-poll-79170}
+    {GE2017: Can you trust that surprise exit poll?}. [Blog post]. 
+    \textit{The Conversation}.
+
+    \item Hartman, T. K., Pattie, C. J., \& Johnston, R.(2017, June 2). 
+    \href{https://theconversation.com/its-sophisticated-but-can-you-believe-yougovs-startling-election-prediction-78701}
+    {It's sophisticated, but can you believe YouGov's startling election prediction?}. [Blog post]. 
+    \textit{The Conversation}.
+
+	\item Pattie, C. J., Johnston, R., \& Hartman, T. K. (2017, May 31). 
+	\href{http://www.democraticaudit.com/2017/05/31/party-canvassers-dont-change-peoples-opinions-but-they-do-persuade-them-to-vote/}{Party canvassers don't change people's opinions, but they do persuade them to vote}. [Blog post]. \textit{Democratic Audit}. 
+
+    \item Pattie, C. J., Johnston, R., \& Hartman, T. K. (2016, June 1). 
+    \href{https://www.washingtonpost.com/news/monkey-cage/wp/2016/06/01/theres-new-u-k-campaign-spending-data-from-the-2015-general-election-heres-how-the-tories-won/}
+    {There's new U.K. campaign spending data from the 2015 general election. Here's how the Tories won.}. [Blog post]. 
+    \textit{Monkey Cage, The Washington Post}.   
+
+    \item Stanley, L., \& Hartman, T. K. (2016, April). 
+    \href{http://speri.dept.shef.ac.uk/wp-content/uploads/2016/04/Brief-22-Welfare-recipients-public-opinion-and-deservingness.pdf}
+    {Welfare recipients, public opinion and `deservingness'}. [Policy brief]. 
+    \textit{SPERI: Sheffield Political Economy Research Institute}.  
+
+    \item Stanley, L., \& Hartman, T. K. (2015, November). 
+    \href{http://speri.dept.shef.ac.uk/wp-content/uploads/2015/11/Brief16-The-UK-annual-tax-summaries.pdf}
+    {Annual Tax Summaries}. [Policy brief]. 
+    \textit{SPERI: Sheffield Political Economy Research Institute}.  
+        
+    \item Pattie, C. J., \& Hartman, T. K. (2015, May 26). 
+    \href{http://www.crickcentre.org/blog/the-dark-night-of-the-polls/}
+    {The dark night of the polls}. [Blog post]. 
+    \textit{The Crick Centre}.   
+   
+    \item Hartman, T. K. (2015, May 5). 
+    \href{https://theconversation.com/think-you-know-which-seats-to-watch-on-may-7-think-again-41073}
+    {Think you know which seats to watch on May 7? Think again}. [Blog post]. 
+    \textit{The Conversation}.
+
+    \item Hartman, T. K. (2015, March 26). 
+    \href{https://theconversation.com/british-voters-dont-care-and-americans-hate-each-other-is-there-any-hope-for-either-39279}
+    {British voters don't care and Americans hate each other: is there any hope for either?} [Blog post]. 
+    \textit{The Conversation}.
+
+	\item Hartman, T. K. (2014). [Review of the book 
+    \href{http://onlinelibrary.wiley.com/doi/10.1002/polq.12227/abstract}	
+	{\emph{The politics of belonging: Race, public opinion, and immigration}}, 
+		by J. Junn \& N. Masuoka]. \emph{Political 
+		Science Quarterly, 129}, 521-522.
+		
+	\item Newman, B. J., {Hartman, T. K.}, Lown, P., \& Feldman, S. (2014, April 25). 
+	\href{http://www.washingtonpost.com/blogs/monkey-cage/wp/2014/04/25/humanitarian-appeals-encourage-a-permissive-immigration-policy/}
+		{`Humanitarian' appeals encourage a permissive immigration policy} [Blog post]. 
+		\textit{Monkey Cage, The Washington Post}.
+		
+	\item {Hartman, T. K.}, Newman, B. J., \& Bell, C. S. (2014, March 25). 
+	\href{http://eprints.lse.ac.uk/58765/}
+	{Anti-Hispanic prejudice drives opposition to immigration in the U.S.} [Blog post]. 
+	\textit{USAPP - American Politics and Policy, London School of Economics and Political Science}.
+
+	\item Kirkley, J. E., {Hartman, T. K.}, McDaniel, T., McConnell, K., Whitehead, J. (2011).
+	``\href{http://web.vims.edu/GreyLit/VIMS/mrr11-14.pdf}
+	{An assessment of the social and economic importance 
+   of menhaden (brevoortia tyrannus) (Latrobe, 1802) in Chesapeake Bay region.}''    
+    Virginia Institute of Marine Science Marine Resource Report No. 2011-14. 227 pp.
+    
+    \item Cherry, T.C., \& {Hartman, T. K.}. (2010).
+    ``\href{http://tkhartman.staff.shef.ac.uk/_content/documents/Cherry.Hartman.2010.pdf}
+    {Rural economic opportunity: Barriers, resources, and best practices}.'' 
+    Report prepared for the North Carolina Rural Economic Development Center.  108 pp.
+	
+    \item Hartman, T. K. (2008). Issue framing. 
+          In K. F. Warren \& J. G. Golson (Eds.),
+          \href{http://www.sagepub.com/books/Book231694}
+          {\emph{Encyclopedia of campaigns, elections, and electoral behavior}}, 
+          Thousand Oaks, CA: Sage Publications.
+\end{bibenum}
+
+\halfblankline
+
+\section{Under Review}
+
+\begin{bibsection}
+
+\item ``Space, place and psychological wellbeing during the Covid-19 pandemic: A UK longitudinal data linkage project''.  with Shevlin, M., Murphy, J., McKenzie, S., Bentall, R. P., Cameron, J., \& Solomon, S. (\textsterling298,516; under review at the Economic and Social Research Council).
+
+\item ``Citizen forecasting and wisdom of the crowds: a cautionary note'' with Ron Johnston and Charles Pattie. (Revise and resubmit at \textit{Political Geography}). 
+
+\item ``\href{https://psyarxiv.com/kvynr/}{Delay discounting and under-valuing of recent information predict lower adherence to social distancing measures during the COVID-19 pandemic}.'' Lloyd, A., McKay, R., Hartman, T. K., Vincent, B. T., Murphy, J., Gibson-Miller, J., Levita, L., Bennett, K., McBride, O.,  Martinez, A. P., Stocks, T. V. A., Vallières, F., Hyland, P., Karatzias, T., Butter, S., Shevlin, M., Fleiming, S., Bentall, R., \& Mason, L. (Revise and resubmit at \textit{Scientific Reports}). 
+
+\item ``Testing Alternative Models and Predictive Utility of the Intolerance of Uncertainty Scale: A longitudinal population based study.''  Murphy, S., Shevlin, M., McBride, O., Murphy, J., Gibson-Miller, J., Hartman, T. K., Levita, L, Mason, L., Martinez, A., McKay, R., Stocks, T. V. A., Bennett, K., Hyland, P., Butter, S., \& Bentall, R. 
+
+\item ``\href{https://psyarxiv.com/dcynw}{The psychological wellbeing of frontline workers in the United Kingdom during the COVID-19 pandemic: First and second wave findings from the COVID-19 Psychological Research Consortium (C19PRC) Study}.'' Murphy, J., Spikol, E., McBride, O., Shevlin, M., Bennett, K., Hartman, T. K.,  Hyland, P., Karatzias, T., Levita, L., Martinez, A. P., Mason, L., McKay, R., Gibson-Miller, J., Stocks, T. V. A., Vallières, F., \& Bentall, R.
+
+\item ``\href{}{Modelling the complexity of pandemic-related lifestyle quality change and mental health: An analysis of a nationally representative UK general population sample}.'' Butter, S.,  Murphy, J., Hyland, P., McBride, O., Shevlin, M., Hartman, T. K., Bennett, K., Gibson-Miller, J., Levita, L., Martinez, A. P., Mason, L., McKay, R., Stocks, T. V. A., Vallières, F., \& Bentall, R. P. 
+
+\item ``\href{https://osf.io/mhj59/}{Demographic, Health and Mental Health Predictors of Face Mask Wearing in the UK Population During the COVID-19 Lockdown Period}''. Shevlin, M.,  McBride, O., Murphy, J., Jilly Gibson-Miller, Hartman, T. K., Levita, L., Mason, L., Martinez, A. P., McKay, R., Stocks, T. V. A., Bennett, K. M., Hyland, P., \& Bentall, R. P.
+
+\item ``Resilience and Exposure to COVID 19 in Italy''. Panzeri, A., Bertamini, M., Butter, S., Jilly Gibson-Miller, Levita, L., Martinez, A. P., Mason, L., McBride, O., McKay, R., Murphy, J., Shevlin, M.,  Stocks, T. V. A., Vidotto, G., Bentall, R. P., Bennett, K. M.
+
+\item ``\href{https://psyarxiv.com/nytxc/}{Design, content, and fieldwork procedures of the COVID-19 Psychological Research Consortium (C19PRC) Study - Wave 4}.'' McBride, O., Butter, S., Murphy, J., Shevlin, M., Hartman, T. K., Bennett, K.,  Stocks, T. V. A., lloyd, A.,McKay, R.,  Gibson-Miller, J.,  Levita, L., Mason, L., Martinez, A. P.,  Hyland, P., Vallières, F., Karatzias, T., Valiente, C., Vazquez, C., \& Bentall, R. P.  
+
+              
+\end{bibsection}
+
+\halfblankline
+
+\section{External\\ Funding}
+
+\begin{bibsection}
+	\item \textbf{Total grant income: \textsterling673,808}
+
+\item ``A longitudinal mixed-methods population study of the UK during the COVID-19 pandemic: Psychological and social adjustment to global threat,'' funded by the Economic and Social Research Council. (2020). Co\-/Investigator with Richard Bentall (PI; Psychology), Kate Bennett (Liverpool), Jilly Gibson Miller (Psychology), Liat Levita (Psychology), Liam Mason (UCL), Orla McBride (Ulster), Jamie Murphy (Ulster), \& Mark Shevlin (Ulster). \textbf{Award: \textsterling376,792}. 
+
+	\item ``Q-Step transitional funding 2019-2021,'' funded by the Nuffield Foundation and ESRC (2019).
+	Principal Investigator. \textbf{Award: \textsterling123,554}.
+
+	\item ``Data trust project,'' funded by the BBC. (2019). Co\-/Investigator with 
+	Helen Kennedy (PI; Sociological Studies). \textbf{Award: \textsterling20,000}. 
+
+	\item ``Young adults in criminal justice,'' funded by the 
+	\href{https://www.barrowcadbury.org.uk/}{Barrow Cadbury Trust} in collaboration with 
+	the UK Ministry of Justice. 
+ 	(2018), Co\-/Investigator with Nathan Hughes (PI; Sociological Studies). \textbf{Award: \textsterling35,110}, 
+
+  \item ``Paying for the poor in an age of austerity: 
+    A comparative experimental study,'' funded by the \href{http://www.britac.ac.uk/index.cfm}
+    {British Academy/Leverhulme Trust}.
+   (2015). Co\-/Investigator with Liam Stanley (PI; Politics) \& Leonard 
+    Seabrooke (Copenhagen Business School).  \textbf{Award: \textsterling9,900},
+    
+     \item ``Acceptability of wind energy, carbon capture storage, 
+    and climate change: A survey experiment of worldviews and 
+    economic interests,'' funded by 
+    the \href{http://www.cicero.uio.no/}
+    {Center for International Climate and Environmental Research, Oslo}. 
+    (2012). Co\-/Principal Investigator with Todd Cherry (Economics). \textbf{Award: \$17,500}
+    
+     \item ``Multi-mode environmental impact survey,''
+    funded by the \href{http://www.vims.edu/}
+    {Virginia Institute of Marine Science}. (2010). Co\-/Principal Investigator with Tanga McDaniel (Economics) \& John Whitehead (Economics). \textbf{Award: \$51,415},
+
+    \item 
+    ``\href{http://www.ncruralcenter.org/images/PDFs/ResearchInnovation/1_livingonmargins_aftermath_final.pdf}
+    {Rural economic opportunity: Barriers, resources, and best practices},'' 
+    funded by the \href{http://www.ncruralcenter.org/}
+    {North Carolina Rural Economic Development Center} (2009). Co\-/Principal Investigator with Todd Cherry (Economics), 
+    Richard Crepeau (Geography and Urban Planning), 
+    Michael McKee (Economics), \& Jammie Price (Sociology).  \textbf{Award: \$100,000},
+
+\end{bibsection}
+
+\halfblankline
+
+\section{Consultancy}
+
+\begin{bibsection}
+	\item \textbf{Total industry consultancy income (since 2015): \textsterling42,660}
+
+	\item ``McDonald's hot drinks market research using survey experiments'' (2020),
+	\textbf{\textsterling3,500},
+	
+	\item ``Galderma skin products quantitative market research'' (2019),
+	\textbf{\textsterling3,500}.
+
+	\item ``McDonald's Messaging Intercept quantitative market research'' (2018), 
+	\textbf{\textsterling2,000}.
+	
+	\item ``Tesco Project Curve discrete choice experiments'' (2018),  
+	\textbf{\textsterling1,000}, 2018.
+
+	\item ``McDonald's McCafe cluster analysis \& discrete choice experiments'' (2017), 
+	\textbf{\textsterling7,800}.
+
+	\item ``Tesco consumer preference surveys and conjoint experiments'' (2017),
+	\textbf{\textsterling3,120}.
+
+	\item ``Chartered Institute of Procurement \& Supply market research'' (2016),
+	\textbf{\textsterling3,120}.
+
+	\item ``Samworth Brothers consumer surveys \& conjoint experiments'' (2016),
+	\textbf{\textsterling7,800}.
+
+	\item ``Royal Mail regression analysis of annual employee surveys'' (2016),
+	\textbf{\textsterling1,560}.
+	
+	\item ``Post Office communication channels quantitative analysis'' (2015),
+	\textbf{\textsterling5,760}.
+\end{bibsection}	
+
+\halfblankline
+	
+\section{Other Funding\\ \& Awards}
+\begin{bibsection}
+	\item ``Pushing the Boundaries Award,'' funded by the Political Studies Association  to organise an interdisciplinary  conference in political psychology. Award: \textbf{\textsterling2,000}, 2019, with Donatella Bonansinga, Raynee Gutting, and James Weinberg. 
+	
+	\item ``Annual tax summaries framing project,'' funded by the Department of Politics, 
+	The University of Sheffield.  \textbf{Award: \textsterling3,300}, 2015, 
+	 with Liam Stanley (Politics).
+	 
+	\item ``Designing survey instruments and embedded experiments,'' 
+	funded by the Faculty of Social Sciences, The University of Sheffield. 
+	\textbf{Award: \textsterling950}, 2015.
+    
+    \item Undergraduate Research Assistantship (Faculty Mentor), funded by the ASU Office of Student Research. \textbf{Award: \$1,000}, 2010. Student: Dustin Landers.
+
+	\item Dissertation Improvement Grant, funded by the Research Foundation, Stony Brook University. \textbf{Award: \$1,000}, 2006.
+
+	\item Full Graduate Assistantship and Tuition Scholarship, Stony Brook University.
+	\textbf{Award: \$120,000}, 2003-2008.
+
+	\item Outstanding Graduate Thesis Award, San Francisco State University, 2003.
+
+\end{bibsection}
+
+\halfblankline
+
+%\section{Unfunded\\ Proposals}
+%
+%\begin{bibsection}
+
+%\item ``An Investigation of Political Trust and Populism in the `Dis'united Kingdom.'' Budget: \textbf{\textsterling218,155}. Proposal under institutional review at the University of Sheffield. PI with Alexandra Anderson and James Weinberg.
+
+%\item ``Violence, trauma \& masculinity: A mixed methods comparative study examining male higher harm violence in Belfast and Sheffield.'' Budget: \textbf{\textsterling848,028}. Proposal under review at the Economic and Social Research Council. Co-I with Gavin Davidson, Anthony Ellis, Shadd Maruna (PI), Will Mason, Georgina Rowse, and Dirk Schubotz.
+
+%\item ``Improving the representativeness of adult social care surveys'' (2019). Requested: \textbf{\textsterling198,947}. Proposal submitted to the National Institute for Health Research. Co\-/I with Sue Yeandle (PI; Sociological Studies),  Matthew Bennett (Birmingham), Yanan  Zhang (Birmingham). 
+
+%\item ``Macroprudential politics: the political economy of regimes (MAPPER)'' (2018). Requested: \textbf{\textsterling777,542}. Proposal submitted to the Economic and Social Research Council. Co\-/I with Andrew Baker (PI; Politics), Jeffrey Chwieroth (LSE), Andrew Hindmoor (Politics), Jon Danielsson (LSE), Daniela Gabor (UWE), Julian Gruin (Warwick), Matthias Thiemann (Goethe Universit\"at), Manuela Moschella (Scuola Normale Superiore). 
+
+%\item ``Reimagining taxpaying: the cultural sources of tax morale'' (2018). Requested: \textbf{\textsterling297,959}. Proposal submitted to the Economic and Social Research Council. Co\-/I with Liam Stanley (PI; Politics). 
+
+% \item ``Collaborative, Representative Experiments in the Social Sciences (CRESS)'' (2018). Establishing platform for conducting population-based survey experiments. Requested: \textbf{\textsterling943,071}. Proposal submitted to the Economic and Social Research Council. Principal Investigator with Co-I Jason Reifler (Exeter), Martin Wood (NatCen), and Curtis Jessop (NatCen).
+%
+%\item ``Policies, strategies and decision support to decarbonise national housing stocks: a pilot study'' (2017). %Requested: \textbf{\textsterling734,535}. Proposal submitted to the %\href{https://www.epsrc.ac.uk/about/partner/international/newtonfund/}{Engineering and Physical Sciences %Research Council}. Co\-/I with Darren Robinson (PI; Architecture) \& Robin Purshouse (Automatic Control and %Systems Engineering).  
+%
+%      \item ``Solidarity in crisis EU'' (2017). Requested: \textbf{\textsterling1,476,950}. Proposal % submitted to the \href{https://erc.europa.eu/funding-and-grants/funding-schemes/starting-grants}%{European Research Council}. 
+%      Co\-/I with Owen Parker (Politics).
+%   
+%    \item ``Commercial Mobile Alert Service (CMAS) Research for Public Response'' (2012). Requested: \$948,902.86. Proposal submitted to the National Science Foundation.
+%    
+%    \item ``Public Opinion of Severe Criminal Sanctions in North Carolina'' (2012). Requested: \$65,499.50. Proposal submitted to the George Soros Open Society Institute.
+ %       
+ %   \item ``Program Evaluation of the Appalachian Regional Commission's Job Creation and Retention Projects.'' (2012). Requested: \$19,662.32. Proposal submitted to SRI International.
+%    
+%  \item ``New River Flood Hazard Mitigation in Rural Appalachian Communities.'' (2011). Requested: \$392,137; (ASU portion: \$193,029). Proposal submitted to the National Science Foundation.
+% 
+%    \item ``Southern Pine Ecosystems and Climate Change: Engineering Knowledge for Mitigation, Adaptation, Education and Extension.'' (2010). Requested: \$19.98 million (ASU portion: \$993,854). Proposal submitted to the USDA and National Institute of Food and Agriculture.
+%
+%
+%\end{bibsection}
+
+\section{Research\\ Supervision}
+\emph{Current PhD Students}
+	\begin{innerlist}
+		\item[-] Betony Clasby (Quantitative Criminology)
+		\item[-] Frank Maracchione (Quantitative Politics)
+		\item[-] Rhiannon Thomas (Quantitative Criminology)
+	\end{innerlist}
+
+\halfblankline
+
+\emph{Postdoctoral Research Assistants}
+	\begin{innerlist}
+		\item[-] Alexandra Anderson, Q-Step ({2020\,--\,})
+		\item[-] Patrick English, Q-Step ({2018})
+		\item[-] Joshua Townsley, Q-Step ({2018\,--\,19})
+		\item[-] James Weinberg, Q-Step ({2018\,--\,19})
+	\end{innerlist}
+
+\halfblankline
+
+\emph{First Supervisor}
+\begin{innerlist}
+	\item[-] Bell, C. S. (2012). ``Mortal morality: 
+                How threat and partisanship influence moral judgment.''
+	\item[-] Brown, N. (2018). ``A quantitative study to explore the impact of police 
+					presence in public on people's trust in the Metropolitan Police Service.''
+
+	\item[-] Clarke, H. (2019). ``Investigating the dimensions of British national identity and their impact on attitudes towards multiculturalism and immigration: A structural equation modelling approach.'' [\textit{Awarded the MA in Social Research Prize for best overall student}]
+                
+	\item[-] Harris, J. W. (2009). ``The angry edges: Out-group
+                         hostility toward immigrants as a function of in-group membership.''
+	\item[-] Ragozzino, M. M. (2012). ``Funhouse mirrors: Do polls 
+                        reflect public opinion or refract democracy?''
+                        
+	\item[-] Smart, T. O. (2013). ``Polling place priming: 
+                Studying the effects of patriotic symbols on American voter choices.''
+\end{innerlist}
+
+\halfblankline
+
+\emph{Second Supervisor}
+\begin{innerlist}
+	\item[-] Bumgardner, E. S. (2009). ``Ideological polarization in the 
+                North Carolina General Assembly.''
+    
+    \item[-] Hartley, E. S. (2009). ``Holding our congressional 
+                leaders accountable: An assessment of the casualty 
+                effect and the electoral costs of the Iraq War.''
+
+%		\item[-] Gioia Iacopini (Quantitative Methods)
+
+                
+    \item[-] Martin, J. C. (2013). ``Issue ownership theory: A performance-side analysis.''
+
+	\item[-] Stewart, H. (2012). ``Perceptions of threat in the 21st Century.''
+	
+	\item[-] Toomey, K. J. (2011). ``Breast self-examination among college-aged females: 
+                An intervention study.''
+                
+	\item[-] Weinberg, J. (2018) ``The personal side of politics: A study 
+				of basic human values in the UK Parliament.'' [PhD]
+\end{innerlist}
+
+\halfblankline
+
+\emph{Examiner}
+\begin{innerlist}
+      \item[-] Inan, M. (2016). ``The generational and social class bases of pro-democratic 
+                	culture in Turkey: A quantitative analysis with WVS data.''
+
+		\item[-] Petterson, M. (2018). ``Identity in political opinion formation: 
+		How information shapes the influence of citizens' identities on political opinions.'' (Aarhus University).      
+       
+\end{innerlist}
+
+\halfblankline
+ 
+\section{UG Honors\\ Supervision}
+\emph{First Supervisor}
+\begin{innerlist}
+	\item[-] DeCarlo, D. T. (2013). ``Moral foundations theory \& 
+                political polarization: An exploration into the link between morality and ideology.''
+
+	\item[-] Fogarty, S. J. (2011). ``Islamophobia and the consequences of 
+                automatically activated stereotypes.''                
+                
+	\item[-] Kannan, C. (2012). ``Attitudes toward Muslims in America: Ten years after 9/11.''
+	 
+	\item[-] Landers, D. A. (2011). ``The political anger scale: Measuring anger in politics.''   
+\end{innerlist}
+
+\halfblankline
+
+\emph{Second Supervisor}
+\begin{innerlist}
+      \item[-] Colon, C. A. (2011). ``Screening breast self-examination behaviors 
+               in college-aged women.''
+               
+      \item[-] Espey, R. M. (2010). ``Increasing organ donation 
+                behaviors by strengthening attitude certainty.''
+               
+      \item[-] McClure, L. B. (2013). ``Polarization and representation in the 2012 Congress.'' 
+
+      \item[-] Meade, C. B. (2013). ``Political polarization and the introduction of the Internet.'' 
+
+      \item[-] Mixon, B. N. (2013). ``An analysis of the pathways women of color take to state legislature.''                 
+\end{innerlist}
+
+  
+\section{Selected\\Media\\Coverage}
+\begingroup
+
+\fontsize{10}{12}\selectfont
+\href{https://www.forbes.com/sites/anuradhavaranasi/2021/01/30/panic-buying-during-the-covid-19-pandemic-associated-with-psychological-distress--higher-income-study/?sh=b9cfb7f267a8}{\textit{Forbes}: ``Panic buying, Covid-19 pandemic associated with psychological distress \& higher income''}
+
+\href{https://www.independent.co.uk/life-style/health-and-families/health-news/coronavirus-shutdown-anxiety-depression-spike-study-nhs-doctors-nurses-a9437091.html}{\textit{The Independent}: ``Coronavirus: Spike in depression and anxiety following shut down''}
+
+\href{https://www.theguardian.com/world/2020/mar/31/rise-in-depression-and-anxiety-day-after-uk-lockdown-announced-study-coronavirus}{\textit{The Guardian}: ``Rise in depression and anxiety day after UK lockdown announced – study''}
+
+\href{https://fivethirtyeight.com/features/does-knowing-whom-others-might-vote-for-change-whom-youll-vote-for/}{ \textit{FiveThirtyEight}: ``Does knowing whom others might vote for change whom you'll vote for?''}
+
+\href{https://www.economist.com/united-states/2018/05/26/gun-massacres-seem-to-change-minds}
+{ \textit{The Economist}: ``Gun massacres seem to change minds''}
+
+\href{https://www.washingtonpost.com/news/monkey-cage/wp/2017/11/06/what-political-science-can-tell-us-about-mass-shootings/?utm_term=.e8b7d21f0831}
+{\textit{The Washington Post}: ``What political science can tell us about mass shootings'' }
+
+\href{https://www.significancemagazine.com/politics/572-gun-laws-and-mass-shootings}
+{\textit{Significance Magazine}: ``People living near mass shootings 'more likely to support gun control''' }
+
+\href{https://www.washingtonpost.com/news/wonk/wp/2018/05/31/the-surprising-way-gun-violence-is-dividing-america/?utm_term=.34704aeef51c}
+{\textit{The Washington Post}: ``The surprising way gun violence is dividing America''}
+
+\href{https://www.theguardian.com/us-news/2016/feb/29/racial-bias-criminal-sentencing-south-carolina}
+{ \textit{The Guardian}: ``Racial bias evident in South Carolina criminal sentences, study reveals''}
+
+\endgroup
+
+\halfblankline
+
+
+\section{Research\\ Talks}
+\begin{longtable}{@{}p{3.5cm}@{}l}%
+   \multicolumn{2}{l}{\textit{Selected Invited Talks}}\\    		
+   		 2020  & {``Exploring public preferences for electoral}\\
+  		  &  {boundary maps using a conjoint experiment'', University of Essex}\\
+   		 
+   		 2018  & {``Cheating the public purse: public attitudes to}\\
+  		  &  {tax evasion and welfare fraud'', Trinity College Dublin}\\
+  		       		      		  
+   \end{longtable}
+    
+\begin{longtable}{@{}p{3.5cm}@{}l}%   
+    \multicolumn{2}{l}{\textit{Conference Chair}}\\
+    
+			2021 PPSG & {Panel: Interdisciplinary Methods Workshop}\\  
+			
+			 2019 PPSG & {Panel: Interdisciplinary Methods Workshop}\\  
+    		
+			2019 ISPP & {Panel Fr. 1: Attitudes, Preferences, Participation}\\            
+            
+            2017 ISPP & {Panel Sa7.3: Psychology of Candidate 
+            Perception \& Evaluation}\\    
+    
+            2014 MPSA & {Panel 27-13: Effects 
+            of Informational Contexts}\\
+            
+            2012 ISPP & {Panel 6D: Political 
+            Deliberation and Citizens' Attitudes}\\
+            
+            2010 ISPP & {Panel 5I: Framing}\\
+            
+            2009 MPSA & {Panel 21-8: Ambivalence}\\
+            
+            2008 ISPP & {Panel 2A: Authoritarianism}\\
+\end{longtable}
+
+\begin{longtable}{@{}p{3.5cm}@{}l}%
+    \multicolumn{2}{l}{\textit{Conference Discussant}}\\
+			2019 ISPP & {Panel Fr. 1: Attitudes, Preferences, Participation}\\                    
+            
+            2013 MPSA & {Panel 27-11: Affect, 
+            Cognition, and Political Decision-Making}\\
+            
+            2012 ISPP & {Panel 3J: Group Identity 
+            and Prejudice}\\
+            
+            2012 MPSA & {Panel 27-4: Elite Messages 
+            and Political Persuasion}\\
+            
+            2011 MPSA & {Panel 27-12: 
+            Social Networks and Deliberation}\\
+            
+            2010 ISPP & {Panel 5I: Framing}\\
+            
+            & {Panel 9K: Intergroup Attitudes 
+            and Political Decision Making}\\
+            
+            & {Panel 9W: National Identity 
+            and Intranational Dynamics}\\
+            
+            2010 NCPSA & {Panel A-5: Political Behavior}\\
+            
+            2009 ISPP & {Panel 4G: Group Influences
+             on Public Opinion}\\
+             
+            & {Panel 4O: Electoral Institutions}\\
+            
+            2008 ISPP & {Panel 5G: Campaigns}\\
+            
+            2008 MPSA & {Panel 21-3: Candidate Evaluation}\\
+\end{longtable}
+
+
+\begin{longtable}{@{}p{3.5cm}@{}l}%
+    \multicolumn{2}{l}{\textit{Conference Presenter}}\\   
+ 			2019 PPSG & {Panel: Interdisciplinary Methods Workshop}\\  			
+			
+			2019 ISPP & {Panel: Fr. 19 Sources and Dynamics of Public Support for Government}\\
+    
+        	2018 PPSG & {Panel: Interdisciplinary Methods Workshop}\\             
+    		
+    		2018 PSA & {Panel: Preferences \& Prejudice: British Politics Today}\\            
+			 
+			 & {Panel: The Political Economy of Fairness and Finance}\\            
+
+            2017 ISPP & {Poster: Social Inequality, Social Change and Civic Development}\\       
+    
+			2017 PSA & {Panel 7: British Capitalism in Interesting Times}\\            
+            
+            2016 ISPP & {Panel 8K: Socio-Economic Status and Inequality Perceptions}\\           
+            
+            2014 MPSA & {Panel 27-14: Cues and 
+            Heuristics}\\            
+            
+            2013 MPSA & {Panel 28-18: Group Identities 
+            and Political Polarization}\\
+            
+            & {Panel 27-15: Moral Reasoning and Politics}\\
+            
+            2012 ISPP & {Panel 3J: Group Identity and Prejudice}\\
+            
+            & {Panel 5E: Threat, Anxiety, and Tone}\\
+            
+            2012 MPSA & {Panel 27-5: Misperceptions 
+            and Motivated Reasoning}\\
+            
+            & {Panel 27-14: Implicit Attitudes and Group Evaluation}\\
+            
+            2011 MPSA & {Panel 27-21: Social Identities}\\
+            
+            & {Panel 38-10: Survey Methods}\\
+            
+            2010 ISPP & {Panel 5J: Ideology}\\
+            
+            2009 ISPP & {Panel 2A: Threat and Group Relations}\\
+            
+            2009 MPSA & {Panel 1-5: Immigration and National Attachment}\\
+            
+            2008 ISPP & {Panel 2D: Correlates of Attitudes towards Immigrants}\\
+            
+            2008 MPSA & {Panel 21-13: Political Attitudes}\\
+            
+            2007 APSA & {Panel 5-7: Communication and Competition}\\
+            
+            2007 ISPP & {Panel T2.6: Metaphors We Communicate With}\\
+            
+            & {Panel T4.5: Political Cognition and Attitudes}\\
+            
+            2007 MPSA & {Panel 21-6: Information Context}\\
+            
+            2006 APSA & {Panel 5-4: Emotional Aspects of 
+            Political Communication}\\
+            
+            2006 MPSA & {Panel 18-1: Advances in the Study of Ambivalence}\\
+            
+            2005 MPSA & {Panel 12-11: Communication Effects}\\
+            
+            2003 ISA & {Poster A: Construction of 
+            Knowledge and International Studies II}\\
+
+\end{longtable}
+		
+\vspace*{.25cm}
+
+\begin{longtable}{@{}p{3.5cm}@{}l}%
+\textit{APSA} & \textit{American Political Science Association}\\
+\textit{ISA} & \textit{International Studies Association}\\
+\textit{ISPP} & \textit{International Society of Political Psychology}\\
+\textit{MPSA} & \textit{Midwest Political Science Association}\\
+\textit{NCPSA} & \textit{North Carolina Political Science Association}\\
+\textit{PPSG} & \textit{Political Psychology Specialist Group (PSA)}\\
+\textit{PSA} & \textit{Political Studies Association}\\
+\end{longtable}
+
+\section{Ad Hoc\\ Reviewer}
+\emph{American Journal of Political Science,
+American Politics Research,
+American Political Science Review,
+American Review of Politics,
+British Journal of Health Psychology,
+British Journal of Political Science,
+British Journal of Politics and International Relations,
+%Contemporary Jewry,
+Economic and Social Research Council,
+Electoral Studies,
+Health Affairs,
+International Journal of Public Opinion Research,
+Journal for the Scientific Study of Religion,
+Journal of Elections, Public Opinion \& Parties, 
+Journal of Ethnic and Migration Studies,
+Journal of Politics,
+Journal of Public Policy,
+Journal of Quantitative Criminology,
+Journal of Race, Ethnicity, \& Politics,
+Journal of Applied Social Psychology,
+Medical Research Council (UKRI),
+National Science Foundation,
+Nations and Nationalism,
+Party Politics,
+PloS One,
+Political Research Quarterly,
+Policy Studies Journal,
+Political Behavior,
+Political Communication,
+Political Psychology,
+Political Studies,
+PS: Political Science \& Politics,
+Public Opinion Quarterly,
+Science Advances, 
+Socio-Economic Review}
+
+\blankline
+
+\section{Classes\\ Developed\\ \& Taught}
+\emph{Research Methods}
+    \begin{innerlist}
+        \item[] Lies, Damned Lies, and Statistics (UG)
+        		    \begin{innerlist}
+        		    	\item[] [SP17, SP18, SP19, SP20, SP21; 40\%]
+        		    \end{innerlist}
+        \item[] Quantitative Methods: Quantitative Data Analysis (Using R) (PG)
+    	        	\begin{innerlist}
+        		    	\item[] [SP09, SP10, SP11, SP12, SP13, SP14, AU17, AU18, AU19, AU20]
+        		    \end{innerlist}
+    	\item[] Q-Step: Quantitative Data Analysis for the Social Sciences (Using R) (UG)
+    	        	\begin{innerlist}
+        		    	\item[] [AU15, AU16, AU17, AU18, AU19, AU20]
+        		    \end{innerlist}
+        \item[] Q-Step: Adv Quantitative Data Analysis for the Social Sciences (Using R)  (UG)
+    	        	\begin{innerlist}
+        		    	\item[] [AU16 - 50\%]
+        		    \end{innerlist}
+        \item[] Principles of Research Design (PG)
+        		    \begin{innerlist}
+        		    	\item[] [AU09, AU13, SP19, SP20, SP21]
+        		    \end{innerlist}
+        \item[] Research Design: Survey Construction and Experimental Design (PG)
+    	        	\begin{innerlist}
+        		    	\item[] [SU10, AU11]
+        		    \end{innerlist}
+        \item[] Workshop: Introduction to R (PG)
+    	        	\begin{innerlist}
+        		    	\item[] [AU18, SP19, AU20]
+        		    \end{innerlist}		
+        \item[] Workshop: Structural Equation Modelling in R (PG)
+    	        	\begin{innerlist}
+        		    	\item[] [SP17, SP21]
+        		    \end{innerlist}			
+    \end{innerlist}
+
+\halfblankline
+
+\emph{Political Psychology}
+    \begin{innerlist}
+        \item[] Identity Politics in the U.S. and Europe (UG)
+    	        	\begin{innerlist}
+        		    	\item[] [SP12]
+        		    \end{innerlist}
+        \item[] Political Communication (UG)
+    	        	\begin{innerlist}
+        		    	\item[] [SP13, SP14]
+        		    \end{innerlist}
+        \item[] Political Psychology (UG, PG)
+    	        	\begin{innerlist}
+        		    	\item[] [AU06, AU09, AU10, SP11, AU12, AU13]
+        		    \end{innerlist}
+        \item[] Public Opinion (UG)
+    	        	\begin{innerlist}
+        		    	\item[] [SP09, AU11]
+        		    \end{innerlist}
+        \item[] Race, Ethnicity, and Politics (UG, PG)
+    	        	\begin{innerlist}
+        		    	\item[] [SP10, AU11]
+        		    \end{innerlist}
+    \end{innerlist}
+
+\halfblankline
+
+\emph{Other Classes}
+    \begin{innerlist}
+        \item[] Film and Politics (UG)
+    	        	\begin{innerlist}
+        		    	\item[] [SU12, AU13]
+        		    \end{innerlist}
+        \item[] Introduction to American Government (UG)
+    	        	\begin{innerlist}
+        		    	\item[] [AU08, SP09, SU09, AU09, SP10, AU11, SP12, AU12, SP13, SP14]
+        		    \end{innerlist}
+        \item[] Introduction to World Politics (UG)
+    	        	\begin{innerlist}
+        		    	\item[] [SU04, SU05, AU05, SP06, SU06]
+        		    \end{innerlist}
+        \item[] Professional Skills for Researchers (PG)
+        		    \begin{innerlist}
+        		    	\item[] [AY16-17, AY17-18]
+        		    \end{innerlist}
+        \item[] Seminar in American Politics (PG)
+    	        	\begin{innerlist}
+        		    	\item[] [AU08]
+        		    \end{innerlist}
+    \end{innerlist}
+    
+\halfblankline
+
+\emph{Experiential Learning (Intensive, On-Site Classes)}
+    \begin{innerlist}
+        \item[] Political Economy in New York City (UG)
+    	        	\begin{innerlist}
+        		    	\item[] [SU13]
+        		    \end{innerlist}
+        \item[] Politics in Washington, D.C. (UG, PG)
+    	        	\begin{innerlist}
+        		    	\item[] [SU09, SU11, SU14]
+        		    \end{innerlist}
+    \end{innerlist}
+
+\halfblankline
+
+\emph{Massive Open Online Courses (MOOCs)}
+    \begin{innerlist}
+            \item[] \href{https://www.futurelearn.com/courses/media-data}
+        {Making Sense of Data in the Media}
+    	        	\begin{innerlist}
+        		    	\item[] [SP16, AU17, SP18]
+        		    \end{innerlist}    
+     \end{innerlist} 
+       
+\vspace*{.25cm}
+
+\begin{longtable}{@{}p{3.5cm}@{}l}%
+\textit{AU} & \textit{Autumn Term}\\
+\textit{PG} & \textit{Postgraduate}\\
+\textit{SP} & \textit{Spring Term}\\
+\textit{SU} & \textit{Summer Term}\\
+\textit{UG} & \textit{Undergraduate}\\
+\end{longtable}
+            
+\blankline
+
+\section{Academic\\ Service}
+    \emph{at The University of Sheffield}
+        \begin{innerlist}
+        \item[] Director, Sheffield Q-Step Centre, 2017--21
+        \item[] Postgraduate Admissions Officer, 2019--20
+        \item[] Level 2 Tutor, 2019--21
+        \item[] Academic Lead, Research Ethics, 2014--21
+        \item[] Board of Governors, \href{https://www.merciaschool.com/}
+        				{Mercia School}, 2018--2020
+        \item[] Director, Learning \& Teaching, 2014--18
+        \item[] Search Committee Member, SMI SL in Politics, Philosophy \& Economics, 2021        
+        \item[] Search Committee Member, PDRA for ESRC-funded COVID-19 Project, 2020
+        \item[] Search Committee Chair, SMI Q-Step Research Associate, 2018
+        \item[] Search Committee Member, SMI SL/L in Qualitative Research Methods, 2017        
+        \item[] Search Committee Member, ESRC-funded Location Dynamics Project, 2016
+        \item[] Search Committee Member, Politics Postdoctoral Research Fellowship, 2016
+        \item[] Search Committee Member, ESRC-funded Urban Big Data Centre, 2015
+		\item[] Search Committee Member, University Teacher in Quantitative Methods, 2015
+        \item[] Search Committee Member, ESRC-funded Location Dynamics Project, 2014
+        \item[] External Reviewer, Vice Chancellor's Fellowship, 2015
+        \item[] Academic Lead, State of Sheffield Faculty Challenge, 2015
+        \item[] Member, Governance and Participation Research Group, 2014--17
+        \end{innerlist}
+      
+\halfblankline
+        
+    \emph{at Appalachian State University}
+        \begin{innerlist}
+        \item[] Director, Survey Research Program, Ctr for Econ Res \& Pol Analysis, 2009--14
+        \item[] Director, Lab for Experimental \& Applied Political Psychology, 2009--14
+        \item[] Chair, American Politics Search Committee, 2013--14
+        \item[] Member, Daniel B. German Endowed Chair Search Committee, 2011--14  
+        \item[] Member, American Politics Search Committee, 2009--10
+        \item[] Member, Departmental Personnel Committee, 2009--10; 11--12; 13--14
+        \item[] Member, David Sutton Scholarship Committee, 2010; 2013
+        \item[] Member, Evolutionary Social-Cognition Lab (Psychology), 2009--10
+        \item[] Webmaster, 2009--11
+        \end{innerlist}
+
+\end{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%% End CV Document %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------%
+% The following is copyright and licensing information for
+% redistribution of this LaTeX source code; it also includes a liability
+% statement. If this source code is not being redistributed to others,
+% it may be omitted. It has no effect on the function of the above code.
+%----------------------------------------------------------------------%
+% Copyright (c) 2007, 2008, 2009, 2010, 2011 by Theodore P. Pavlic
+%
+% Unless otherwise expressly stated, this work is licensed under the
+% Creative Commons Attribution-Noncommercial 3.0 United States License. To
+% view a copy of this license, visit
+% http://creativecommons.org/licenses/by-nc/3.0/us/ or send a letter to
+% Creative Commons, 171 Second Street, Suite 300, San Francisco,
+% California, 94105, USA.
+%
+% THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
+% OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+% MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+% IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
+% CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
+% TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
+% SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+%----------------------------------------------------------------------%
