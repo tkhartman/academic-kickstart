@@ -31,7 +31,7 @@ abstract_short = "Using two survey experiments and observational data, we invest
 image_preview = ""
 
 # Is this a selected publication? (true/false)
-selected = true
+selected = false
 
 # Projects (optional).
 #   Associate this publication with one or more of your projects.
