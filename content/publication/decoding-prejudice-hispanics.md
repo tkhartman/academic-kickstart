@@ -31,7 +31,7 @@ abstract_short = "Using data from several nationally representative survey exper
 image_preview = ""
 
 # Is this a selected publication? (true/false)
-selected = true
+selected = false
 
 # Projects (optional).
 #   Associate this publication with one or more of your projects.
