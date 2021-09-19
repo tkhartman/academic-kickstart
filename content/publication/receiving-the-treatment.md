@@ -2,7 +2,7 @@
 title = "Are citizens 'receiving the treatment'? Assessing a key link in contextual theories of public opinion and political behavior"
 
 # Date first published.
-date = "2013-09-06"
+date = "2014"
 
 # Authors. Comma separated list, e.g. `["Bob Smith", "David Jones"]`.
 authors = ["Benjamin J. Newman", "Yamil Velez", "Todd K. Hartman", "Alexa Bankert"]
