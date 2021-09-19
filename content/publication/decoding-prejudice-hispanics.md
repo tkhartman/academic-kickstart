@@ -2,7 +2,7 @@
 title = "Decoding prejudice toward Hispanics: Group cues and public reactions to threatening immigrant behavior"
 
 # Date first published.
-date = "2014"
+date = "01-01-2014"
 
 # Authors. Comma separated list, e.g. `["Bob Smith", "David Jones"]`.
 authors = ["Todd K. Hartman", "Benjamin J. Newman", "C. Scott Bell"]
