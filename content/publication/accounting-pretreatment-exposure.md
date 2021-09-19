@@ -2,7 +2,7 @@
 title = "Accounting for pre-treatment exposure in panel data: Re-estimating the effect of mass public shootings"
 
 # Date first published.
-date = "2019"
+date = "01-01-2019"
 
 # Authors. Comma separated list, e.g. `["Bob Smith", "David Jones"]`.
 authors = ["Todd K. Hartman", "Benjamin J. Newman"]
