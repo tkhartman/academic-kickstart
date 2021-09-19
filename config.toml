@@ -55,18 +55,18 @@ enableGitInfo = false
 
   # Your details.
   name = "Todd K Hartman"
-  role = "Senior Lecturer in Quantitative Social Science"
+  role = "Professor of Quantitative Social Science"
 
   # Organizations/Affiliations.
   #   Separate multiple entries with a comma, using the form: `[ {name="Org1", url=""}, {name="Org2", url=""} ]`.
-  organizations = [ { name = "The University of Sheffield", url = "https://www.sheffield.ac.uk/smi" } ]
+  organizations = [ { name = "The University of Manchester", url = "https://www.research.manchester.ac.uk/portal/en/researchers/todd-hartman(555e041f-1740-47e3-a332-e929f7dd3e8c).html" } ]
 
   gravatar = false  # Get your avatar from Gravatar.com? (true/false)
   avatar = "hartman140v.jpg"  # Specify an avatar image (in `static/img/` folder) or delete value to disable avatar.
-  email = "t.k.hartman@sheffield.ac.uk"
-  address = "Sheffield Methods Institute, ICOSS Building, 219 Portobello Street, S1 4DP"
+  email = "todd.hartman@manchester.ac.uk"
+  address = "Department of Social Statistics, G.13 Humanities Bridgeford Building, Manchester M15 6FH, United Kingdom"
   office_hours = "By appointment (Email)"
-  phone = "+44 (0)114 222 7122"
+  phone = ""
   skype = ""
   telegram = ""
 
@@ -98,8 +98,8 @@ enableGitInfo = false
   #   3: OpenStreetMap (Mapbox)
   map = 2
   map_api_key = ""
-  latitude = "53.381162"
-  longitude = "-1.481767"
+  latitude = "53.466180"
+  longitude = "-2.235890"
   zoom = 15
 
   # Date and time format (refer to Go's date format: http://fuckinggodateformat.com )
@@ -226,7 +226,7 @@ enableGitInfo = false
   [[params.social]]
     icon = "envelope"
     icon_pack = "fa"
-    link = "mailto:t.k.hartman@sheffield.ac.uk"
+    link = "mailto:todd.hartman@manchester.ac.uk"
 
   [[params.social]]
     icon = "twitter"
