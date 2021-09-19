@@ -2,7 +2,7 @@
 title = "Learning on the job? Adapting party campaign strategy to changing information on the local political context"
 
 # Date first published.
-date = "01-01-2017"
+date = "2017-01-01"
 
 # Authors. Comma separated list, e.g. `["Bob Smith", "David Jones"]`.
 authors = ["Todd K. Hartman", "Charles Pattie", "Ron Johnston"]
