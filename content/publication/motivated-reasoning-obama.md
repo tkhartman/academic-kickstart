@@ -2,7 +2,7 @@
 title = "Motivated reasoning, political sophistication, and associations between President Obama and Islam"
 
 # Date first published.
-date = "01-01-2012"
+date = "2012-01-01"
 
 # Authors. Comma separated list, e.g. ["Bob Smith", "David Jones"].
 authors = ["Todd K. Hartman", "Adam J. Newmark"]
