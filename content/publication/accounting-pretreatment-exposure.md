@@ -31,7 +31,7 @@ abstract_short = "Using data from the CCES, we demonstrate the importance of pro
 image_preview = ""
 
 # Is this a selected publication? (true/false)
-selected = true
+selected = false
 
 # Projects (optional).
 #   Associate this publication with one or more of your projects.
