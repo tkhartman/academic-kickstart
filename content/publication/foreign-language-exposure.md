@@ -2,7 +2,7 @@
 title = "Foreign language exposure, cultural threat, and opposition to immigration"
 
 # Date first published.
-date = "2012"
+date = "01-01-2012"
 
 # Authors. Comma separated list, e.g. `["Bob Smith", "David Jones"]`.
 authors = ["Benjamin J. Newman", "Todd K. Hartman", "Charles S. Taber"]
