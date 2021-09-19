@@ -2,7 +2,7 @@
 title = "Who said what? The effects of source cues in issue frames"
 
 # Date first published.
-date = "2009-03-18"
+date = "2009"
 
 # Authors. Comma separated list, e.g. `["Bob Smith", "David Jones"]`.
 authors = ["Todd K. Hartman", "Christopher R. Weber"]
