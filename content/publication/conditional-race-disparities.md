@@ -2,7 +2,7 @@
 title = "Conditional race disparities in criminal sentencing: A test of the liberation hypothesis from a non-guidelines state"
 
 # Date first published.
-date = "2017"
+date = "01-01-2017"
 
 # Authors. Comma separated list, e.g. `["Bob Smith", "David Jones"]`.
 authors = ["Rhys Hester", "Todd K. Hartman"]
