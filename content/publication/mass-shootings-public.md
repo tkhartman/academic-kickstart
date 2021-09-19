@@ -2,7 +2,7 @@
 title = "Mass shootings and public support for gun control"
 
 # Date first published.
-date = "01-01-2019"
+date = "2019-01-01"
 
 # Authors. Comma separated list, e.g. `["Bob Smith", "David Jones"]`.
 authors = ["Benjamin J. Newman", "Todd K. Hartman"]
