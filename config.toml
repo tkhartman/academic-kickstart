@@ -259,7 +259,7 @@ enableGitInfo = false
   
 [[menu.main]]
   name = "CV"
-  url = "https://www.dropbox.com/s/wbd7v41ydxqdt0j/Hartman_Todd_K_CV.pdf?dl=0"
+  url = "https://www.dropbox.com/s/aesp7s7806ggw4m/hartman_cv.pdf?dl=0"
   weight = 2
 
 [[menu.main]]
