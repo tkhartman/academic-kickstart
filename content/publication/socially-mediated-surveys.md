@@ -2,7 +2,7 @@
 title = "Socially mediated internet surveys: Recruiting participants for online experiments"
 
 # Date first published.
-date = "2013"
+date = "01-01-2013"
 
 # Authors. Comma separated list, e.g. `["Bob Smith", "David Jones"]`.
 authors = ["Erin C. Cassese", "Leonie Huddy", "Todd K. Hartman", "Lilliana Mason", "Christopher R. Weber"]
