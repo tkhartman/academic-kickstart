@@ -2,7 +2,7 @@
 title = "Toll booths on the information superhighway? Policy metaphors in the case of Net Neutrality"
 
 # Date first published.
-date = "2012"
+date = "01-01-2012"
 
 # Authors. Comma separated list, e.g. `["Bob Smith", "David Jones"]`.
 authors = ["Todd K. Hartman"]
