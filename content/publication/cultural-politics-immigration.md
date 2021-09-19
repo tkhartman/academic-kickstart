@@ -2,7 +2,7 @@
 title = "Social dominance and the cultural politics of immigration"
 
 # Date first published.
-date = "01-01-2014"
+date = "2014-01-01"
 
 # Authors. Comma separated list, e.g. `["Bob Smith", "David Jones"]`.
 authors = ["Benjamin J. Newman", "Todd K. Hartman", "Charles S. Taber"]
