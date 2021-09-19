@@ -11,24 +11,24 @@ weight = 5
 [interests]
   interests = [
     "Political Psychology",
-    "Political Communication",
+    "Quantitative Social Science",
     "Survey Experiments"
   ]
 
 # List your qualifications (such as academic degrees).
 [[education.courses]]
-  course = "PhD in Political Science"
-  institution = "State University of New York at Stony Brook"
+  course = "PhD in Political Science (Political Psychology)"
+  institution = "Stony Brook University (SUNY, USA)"
   year = 2009
 
 [[education.courses]]
   course = "MA in International Relations"
-  institution = "San Francisco State University"
+  institution = "San Francisco State University (USA)"
   year = 2003
 
 [[education.courses]]
   course = "BA in International Relations"
-  institution = "University of California at Davis"
+  institution = "University of California, Davis (USA)"
   year = 1998
  
 +++
