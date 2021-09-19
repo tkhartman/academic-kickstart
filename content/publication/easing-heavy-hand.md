@@ -2,7 +2,7 @@
 title = "Easing the heavy hand: Humanitarian concern, empathy, and opinion on immigration"
 
 # Date first published.
-date = "2013-11-26"
+date = "2015"
 
 # Authors. Comma separated list, e.g. `["Bob Smith", "David Jones"]`.
 authors = ["Benjamin J. Newman", "Todd K. Hartman", "Patrick L. Lown", "Stanley Feldman"]
