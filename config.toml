@@ -55,7 +55,7 @@ enableGitInfo = false
 
   # Your details.
   name = "Todd K Hartman"
-  role = "Professor of Quantitative Social Science"
+  role = "Professor of Quantitative Social Science, Department of Social Statistics"
 
   # Organizations/Affiliations.
   #   Separate multiple entries with a comma, using the form: `[ {name="Org1", url=""}, {name="Org2", url=""} ]`.
@@ -64,8 +64,8 @@ enableGitInfo = false
   gravatar = false  # Get your avatar from Gravatar.com? (true/false)
   avatar = "hartman140v.jpg"  # Specify an avatar image (in `static/img/` folder) or delete value to disable avatar.
   email = "todd.hartman@manchester.ac.uk"
-  address = "Department of Social Statistics, G.13 Humanities Bridgeford Building, Manchester M15 6FH, United Kingdom"
-  office_hours = "By appointment (Email)"
+  address = " G.13 Humanities Bridgeford Building, Department of Social Statistics, University of Manchester, Manchester M15 6FH, United Kingdom"
+  office_hours = ""
   phone = ""
   skype = ""
   telegram = ""
@@ -222,16 +222,16 @@ enableGitInfo = false
   #   google-scholar, arxiv, orcid, researchgate, mendeley
   #
   #   Full list: https://jpswalsh.github.io/academicons/
-
-  [[params.social]]
-    icon = "envelope"
-    icon_pack = "fa"
-    link = "mailto:todd.hartman@manchester.ac.uk"
     
   [[params.social]]
     icon = "home"
     icon_pack = "fa"
     link = "//www.research.manchester.ac.uk/portal/en/researchers/todd-hartman(555e041f-1740-47e3-a332-e929f7dd3e8c).html"
+    
+   [[params.social]]
+    icon = "envelope"
+    icon_pack = "fa"
+    link = "mailto:todd.hartman@manchester.ac.uk"
 
   [[params.social]]
     icon = "twitter"
@@ -268,19 +268,19 @@ enableGitInfo = false
   weight = 2
 
 [[menu.main]]
-  name = "Publications"
+  name = "Repository"
   url = "#publications_selected"
   weight = 3
 
-[[menu.main]]
-  name = "Posts"
-  url = "#posts"
-  weight = 4
+#[[menu.main]]
+#  name = "Posts"
+#  url = "#posts"
+#  weight = 4
 
 [[menu.main]]
   name = "Contact"
   url = "#contact"
-  weight = 5
+  weight = 4
 
 # Taxonomies.
 [taxonomies]
