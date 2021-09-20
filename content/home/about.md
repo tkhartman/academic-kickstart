@@ -41,13 +41,5 @@ Professor Hartman has been working with an interdisciplinary team to study the i
 
 This project is also making an impact outside of academia, as Professor Hartman and his colleagues are regularly in contact with Public Health England, the NHS, the Cabinet Office, and others working in the public interest. One exciting aspect about this project is that the data contains so many validated psychological, political, economic, and social indicators (including geo-location information) that there are still many important questions to be answered with the publickly available survey data. He is eager to explore opportunities to collaborate with others using the data collected since the pandemic began. Full details about the [COVID-19 Psychological Research Consortium](https://www.sheffield.ac.uk/psychology-consortium-covid19) can be found on the team's webpage, and research outputs and the data are publicly available at the [Open Science Framework](https://osf.io/v2zur/) and [PsyArXiv](https://osf.io/preprints/discover?q=%22Todd%20K%20Hartman%22).
 
-  [[params.social]]
-    icon = "osf"
-    icon_pack = "fa"
-    link = "//osf.io/v2zur/"
     
-   [[params.social]]
-    icon = "psyarxiv"
-    icon_pack = "fa"
-    link = "//osf.io/preprints/discover?q=%22Todd%20K%20Hartman%22"
 
