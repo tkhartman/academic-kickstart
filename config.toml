@@ -264,7 +264,7 @@ enableGitInfo = false
   
 [[menu.main]]
   name = "CV"
-  url = "https://www.dropbox.com/s/aesp7s7806ggw4m/hartman_cv.pdf?dl=0"
+  url = "https://github.com/tkhartman/academic-kickstart/blob/master/hartman_cv.pdf"
   weight = 2
 
 [[menu.main]]
