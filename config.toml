@@ -264,7 +264,7 @@ enableGitInfo = false
   
 [[menu.main]]
   name = "CV"
-  url = "https://github.com/tkhartman/academic-kickstart/blob/master/hartman_cv.pdf"
+  url = "https://github.com/tkhartman/academic-cv/blob/master/hartman_cv.pdf"
   weight = 2
 
 [[menu.main]]
