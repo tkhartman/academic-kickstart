@@ -234,11 +234,6 @@ enableGitInfo = false
     link = "mailto:todd.hartman@manchester.ac.uk"
 
   [[params.social]]
-    icon = "twitter"
-    icon_pack = "fa"
-    link = "//twitter.com/tkhartman"
-
-  [[params.social]]
     icon = "google-scholar"
     icon_pack = "ai"
     link = "//scholar.google.co.uk/citations?user=d07BFScAAAAJ"
